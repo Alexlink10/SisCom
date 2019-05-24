@@ -75,7 +75,7 @@ public class Tela_produto extends javax.swing.JFrame {
 
         jLabel2.setText("Descrição:");
 
-        jComboBox_tamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "17", "18", "19", "20", "21", "22", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48" }));
+        jComboBox_tamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "16", "17", "18", "19", "20", "21", "22", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48" }));
 
         jLabel3.setText("Tamanho:");
 
@@ -240,6 +240,14 @@ public class Tela_produto extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -312,7 +320,7 @@ public class Tela_produto extends javax.swing.JFrame {
         
         novop.setReferencia(Integer.parseInt(jTextField_referencia.getText()));
         novop.setDescricao(jTextField_descrircao.getText());
-        novop.setTamanho(jComboBox_tamanho.getSelectedIndex());
+        novop.setTamanho(Integer.parseInt((String) jComboBox_tamanho.getSelectedItem()));
         novop.setQuantidade(Integer.parseInt(jTextField_quantidade.getText()));
         novop.setValorcompra(Float.parseFloat(jTextField_Compra.getText()));
         novop.setValorvenda(Float.parseFloat(jTextField_venda.getText()));
@@ -329,13 +337,33 @@ public class Tela_produto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_salvarActionPerformed
 
     private void jButton_localizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_localizarActionPerformed
-       
-        
-        Produto novop = new Produto();
         
         ProdutoDao ppd = new ProdutoDao();
         
-        List <ProdutoDao> listaselect = new ArrayList<ProdutoDao>();
+        List <Produto> produto = ppd.listarProduto();
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("referencia");
+        modelo.addColumn("descricao");
+        modelo.addColumn("tamanho");
+        modelo.addColumn("quantidade");
+        modelo.addColumn("valorcompra");
+        modelo.addColumn("valorvenda");
+        
+        Object rowData[] = new Object[6];
+        for(int i=0; i<produto.size();i++){
+            
+            rowData[0] = produto.get(i).getReferencia();
+            rowData[1] = produto.get(i).getDescricao();
+            rowData[2] = produto.get(i).getTamanho();
+            rowData[3] = produto.get(i).getQuantidade();
+            rowData[4] = produto.get(i).getValorcompra();
+            rowData[5] = produto.get(i).getValorvenda();
+            
+            modelo.addRow(rowData);
+        }
+        
+        jTable1.setModel(modelo);
         
         
         
