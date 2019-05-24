@@ -12,6 +12,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -73,7 +75,7 @@ public class Tela_produto extends javax.swing.JFrame {
 
         jLabel2.setText("Descrição:");
 
-        jComboBox_tamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "32", "24" }));
+        jComboBox_tamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16", "17", "18", "19", "20", "21", "22", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48" }));
 
         jLabel3.setText("Tamanho:");
 
@@ -319,50 +321,25 @@ public class Tela_produto extends javax.swing.JFrame {
         ProdutoDao pd = new ProdutoDao();
         
         pd.salvar(novop);
+        limparcampos();
+        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
         
         
-                   
-  
-                   
-       
-            /*
-            try {
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/siscon?useSSL=false","root","root");
-            String query = "INSERT INTO produto (referencia,descricao,tamanho,quantidade,valorcompra,valorvenda)VALUES(?,?,?,?,?,?)";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            
-            stmt.setString(1, jTextField_referencia.getText());
-            stmt.setString(2, jTextField_descrircao.getText());
-            stmt.setString(3, (String) jComboBox_tamanho.getSelectedItem());
-            stmt.setString(4, jTextField_quantidade.getText());
-            stmt.setString(5, jTextField_Compra.getText());
-            stmt.setString(6, jTextField_venda.getText());
-            
-            
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-            
-            JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!");
-            
-            limparcampos();
-            
-            } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Tela_produto.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showInternalMessageDialog(this, "Class não encontrada!");
-            } catch (SQLException ex) {
-            Logger.getLogger(Tela_produto.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Falha ao conectar com o banco!");
-            
-            }
-            */
         
     }//GEN-LAST:event_jButton_salvarActionPerformed
 
     private void jButton_localizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_localizarActionPerformed
+       
         
+        Produto novop = new Produto();
+        
+        ProdutoDao ppd = new ProdutoDao();
+        
+        List <ProdutoDao> listaselect = new ArrayList<ProdutoDao>();
+        
+        
+        
+        /*
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/siscon?useSSL=false","root","root");
@@ -397,7 +374,7 @@ public class Tela_produto extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Tela_produto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        */
     }//GEN-LAST:event_jButton_localizarActionPerformed
 
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
