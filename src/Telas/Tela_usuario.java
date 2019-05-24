@@ -6,7 +6,9 @@
 package Telas;
 
 
+import Controle.Usuario;
 import com.mysql.jdbc.Driver;
+import dao.UsuarioDao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -66,6 +68,8 @@ public class Tela_usuario extends javax.swing.JFrame {
         jButton_excluir = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1_usuario = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -219,7 +223,7 @@ public class Tela_usuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(110, 110, 110)
                 .addComponent(jButton4)
                 .addGap(54, 54, 54)
                 .addComponent(jButton2)
@@ -229,20 +233,73 @@ public class Tela_usuario extends javax.swing.JFrame {
                 .addComponent(jButton_salvar)
                 .addGap(71, 71, 71)
                 .addComponent(jButton5)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton_excluir)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton_salvar))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
+
+        jTable1_usuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "  Nome", "   Login", "   Senha", "   CPF", " Telefone", "   E-mail", "    Rua", "  Número", "   Bairro", "  Cidade", "   Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1_usuario);
+        if (jTable1_usuario.getColumnModel().getColumnCount() > 0) {
+            jTable1_usuario.getColumnModel().getColumn(0).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(1).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(2).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(3).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(4).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(5).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(6).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(7).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(8).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(9).setResizable(false);
+            jTable1_usuario.getColumnModel().getColumn(10).setResizable(false);
+        }
 
         jMenu1.setText("Arquivo");
         jMenuBar1.add(jMenu1);
@@ -257,18 +314,20 @@ public class Tela_usuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 77, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(839, 539));
+        setSize(new java.awt.Dimension(839, 767));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -299,44 +358,28 @@ public class Tela_usuario extends javax.swing.JFrame {
     
     private void jButton_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salvarActionPerformed
        
-        try {
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/siscon?useSSL=false","root","root");
-            String query = "INSERT INTO usuario (nome,login,senha,cpf,telefone,email,rua,numero,bairro,cidade,estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement stmt = con.prepareStatement(query);
-            
-            stmt.setString(1, jTextField_nome.getText());
-            stmt.setString(2, jTextField_login.getText());
-            stmt.setString(3, jTextField_senha.getText());
-            stmt.setString(4, jTextField_cpf.getText());
-            stmt.setString(5, jTextField_telefone.getText());
-            stmt.setString(6, jTextField_email.getText());
-            stmt.setString(7, jTextField_rua.getText());
-            stmt.setString(8, jTextField_numero.getText());
-            stmt.setString(9, jTextField_bairro.getText());
-            stmt.setString(10, jTextField_cidade.getText());
-            stmt.setString(11, jTextField_estado.getText());
-            
-            stmt.executeUpdate();
-            stmt.close();
-            con.close();
-            
-            JOptionPane.showMessageDialog(this, "Cadastro efetuado com suçesso");
-            
-            LimparCampos();
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Tela_usuario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Class for nome não encontrada");
-        } catch (SQLException ex) {
-            Logger.getLogger(Tela_usuario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatorios!");
-        }
         
-       
+                Usuario novoUsu = new Usuario();
                 
+                novoUsu.setNome(jTextField_nome.getText());
+                novoUsu.setLogin(jTextField_login.getText());
+                novoUsu.setSenha(jTextField_login.getText());
+                novoUsu.setCpf(jTextField_cpf.getText());
+                novoUsu.setTelefone(jTextField_telefone.getText());
+                novoUsu.setEmail(jTextField_email.getText());
+                novoUsu.setRua(jTextField_rua.getText());
+                novoUsu.setNumero(jTextField_numero.getText());
+                novoUsu.setBairro(jTextField_bairro.getText());
+                novoUsu.setCidade(jTextField_cidade.getText());
+                novoUsu.setEstado(jTextField_estado.getText());
+                
+                UsuarioDao ud = new UsuarioDao();
+                
+                ud.cadastra(novoUsu);
+                
+                LimparCampos();
+                
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
                 
         
         
@@ -422,6 +465,8 @@ String novo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1_usuario;
     private javax.swing.JTextField jTextField_bairro;
     private javax.swing.JTextField jTextField_cidade;
     private javax.swing.JTextField jTextField_cpf;

@@ -9,10 +9,9 @@ package Controle;
  *
  * @author Alex
  */
-public class usuario {
+public class Cliente {
     
-    private String nome;
-    private String login;
+    private Integer id_usuario;
     private String senha;
     private String cpf;
     private String telefone;
@@ -22,11 +21,9 @@ public class usuario {
     private String bairro;
     private String cidade;
     private String estado;
-    
-    
-    public usuario(String nome, String login, String senha, String cpf, String telefone, String email, String rua, String numero, String bairro, String cidade, String estado) {
-        this.nome = nome;
-        this.login = login;
+
+    public Cliente(Integer id_usuario, String senha, String cpf, String telefone, String email, String rua, String numero, String bairro, String cidade, String estado) {
+        this.id_usuario = id_usuario;
         this.senha = senha;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -38,20 +35,15 @@ public class usuario {
         this.estado = estado;
     }
 
-    public String getNome() {
-        return nome;
+    public Cliente() {
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Integer getId_usuario() {
+        return id_usuario;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getSenha() {
@@ -125,8 +117,6 @@ public class usuario {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
     
     
     
