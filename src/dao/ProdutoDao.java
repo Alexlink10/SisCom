@@ -5,7 +5,7 @@
  */
 package dao;
 
-import controle.Produto;
+import Controle.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +31,7 @@ public class ProdutoDao {
     
     public boolean salvar(Produto produto){
     
-        String query = "INSERT INTO produto (referencia, modelo, marca, tamanho, quantidade, cor, valor_compra, valor_venda)VALUES(?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO produto (referencia,descricao,tamanho,quantidade,valorcompra,valorvenda)VALUES(?,?,?,?,?,?)";
         
         PreparedStatement stmt = null;
         
@@ -39,14 +39,11 @@ public class ProdutoDao {
             
             stmt = conn.prepareStatement(query);
             stmt.setInt(1, produto.getReferencia());
-            stmt.setString(2, produto.getModelo());
-            stmt.setString(3, produto.getMarca());
-            stmt.setInt(4, produto.getTamanho());
-            stmt.setInt(5, produto.getQuantidade());
-            stmt.setString(6, produto.getCor());
-            stmt.setDouble(7, produto.getValor_compra());
-            stmt.setDouble(8, produto.getValor_venda());
-            
+            stmt.setString(2, produto.getDescricao());
+            stmt.setInt(3, produto.getTamanho());
+            stmt.setFloat(4, produto.getQuantidade());
+            stmt.setFloat(5, produto.getValorcompra());
+            stmt.setFloat(6, produto.getValorvenda());
             
             stmt.executeUpdate();
             
@@ -97,32 +94,6 @@ public class ProdutoDao {
             throw  new  RuntimeException (ex);
         }        
         
-    }
-     
-     public boolean editar(Produto produto){
-    
-        String query = "UPDATE produto SET referencia = ?, descricao = ?, tamanho = ?, quantidade = ?, valorcompra = ?, valorvenda = ?";
-        
-        PreparedStatement stmt = null;
-        
-        try {
-            
-            stmt = conn.prepareStatement(query);
-            stmt.setInt(1, produto.getId_produto());
-            
-            
-            stmt.executeUpdate();
-            
-            
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }finally{
-        
-            ConexaoJdbc.closeConnection(conn, stmt);
-        }   
-    
     }
     
 }
