@@ -12,14 +12,24 @@ package controle;
 public class Produto {
     
     private Integer id_produto;
+<<<<<<< HEAD
      private Integer referencia;
+=======
+    private Integer referencia;  //// vata esse em int e foda kkk
+>>>>>>> 2c61cb7ee100ce83d49f5fc596b0869fd77a1351
     private String modelo;
     private String marca;
     private Integer tamanho;
     private String cor;
     private Integer quantidade;
+<<<<<<< HEAD
     private Double valor_compra;
     private Double valor_venda;
+=======
+    private Integer cor;
+    private float valorcompra;
+    private float valorvenda;
+>>>>>>> 2c61cb7ee100ce83d49f5fc596b0869fd77a1351
 
     public Produto(Integer id_produto, Integer referencia, String modelo, String marca, Integer tamanho, String cor, Integer quantidade, Double valor_compra, Double valor_venda) {
         this.referencia = referencia;
