@@ -3,67 +3,82 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controle;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+package controle;
 
 /**
  *
- * @author Alex
+ * @author israe
  */
 public class Produto {
-   
+    
     private Integer id_produto;
+<<<<<<< HEAD
+     private Integer referencia;
+=======
     private Integer referencia;  //// vata esse em int e foda kkk
-    private String descricao;
+>>>>>>> 2c61cb7ee100ce83d49f5fc596b0869fd77a1351
+    private String modelo;
+    private String marca;
     private Integer tamanho;
+    private String cor;
     private Integer quantidade;
+<<<<<<< HEAD
+    private Double valor_compra;
+    private Double valor_venda;
+=======
+    private Integer cor;
     private float valorcompra;
     private float valorvenda;
+>>>>>>> 2c61cb7ee100ce83d49f5fc596b0869fd77a1351
+
+    public Produto(Integer id_produto, Integer referencia, String modelo, String marca, Integer tamanho, String cor, Integer quantidade, Double valor_compra, Double valor_venda) {
+        this.referencia = referencia;
+        this.id_produto = id_produto;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.quantidade = quantidade;
+        this.valor_compra = valor_compra;
+        this.valor_venda = valor_venda;
+    }
+
+    public Produto(String modelo, Integer referencia, String marca, Integer tamanho, String cor, Integer quantidade, Double valor_compra, Double valor_venda) {
+        this.referencia = referencia;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.quantidade = quantidade;
+        this.valor_compra = valor_compra;
+        this.valor_venda = valor_venda;
+    }
 
     public Produto() {
-    
     }
 
-    public Produto(Integer referencia, String descricao, Integer tamanho, Integer quantidade, float valorcompra, float valorvenda) {
-        this.referencia = referencia;
-        this.descricao = descricao;
-        this.tamanho = tamanho;
-        this.quantidade = quantidade;
-        this.valorcompra = valorcompra;
-        this.valorvenda = valorvenda;
-    }
-    
-    
-
-    public Integer getId_produto(){
+    public Integer getId_produto() {
         return id_produto;
     }
-    
-    public void setId_produto(Integer id_produto){
+
+    public void setId_produto(Integer id_produto) {
         this.id_produto = id_produto;
     }
-    
-    public Integer getReferencia() {
-        return referencia;
+
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setReferencia(Integer referencia) {
-        this.referencia = referencia;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public Integer getTamanho() {
@@ -74,6 +89,22 @@ public class Produto {
         this.tamanho = tamanho;
     }
 
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+    
+    public Integer getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(Integer referencia) {
+        this.referencia = referencia;
+    }
+
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -82,21 +113,20 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public float getValorcompra() {
-        return valorcompra;
+    public Double getValor_compra() {
+        return valor_compra;
     }
 
-    public void setValorcompra(float valorcompra) {
-        this.valorcompra = valorcompra;
+    public void setValor_compra(Double valor_compra) {
+        this.valor_compra = valor_compra;
     }
 
-    public float getValorvenda() {
-        return valorvenda;
+    public Double getValor_venda() {
+        return valor_venda;
     }
 
-    public void setValorvenda(float valorvenda) {
-        this.valorvenda = valorvenda;
+    public void setValor_venda(Double valor_venda) {
+        this.valor_venda = valor_venda;
     }
-        
     
 }
