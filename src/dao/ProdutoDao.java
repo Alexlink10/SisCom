@@ -95,5 +95,31 @@ public class ProdutoDao {
         }        
         
     }
+     
+     public boolean editar(Produto produto){
+    
+        String query = "UPDATE produto SET referencia = ?, descricao = ?, tamanho = ?, quantidade = ?, valorcompra = ?, valorvenda = ?";
+        
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, produto.getId_produto());
+            
+            
+            stmt.executeUpdate();
+            
+            
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }finally{
+        
+            ConexaoJdbc.closeConnection(conn, stmt);
+        }   
+    
+    }
     
 }

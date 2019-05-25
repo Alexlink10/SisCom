@@ -21,9 +21,11 @@ public class Produto {
    
     private Integer id_produto;
     private Integer referencia;  //// vata esse em int e foda kkk
-    private String descricao;
+    private String modelo;
+    private String marca;
     private Integer tamanho;
     private Integer quantidade;
+    private Integer cor;
     private float valorcompra;
     private float valorvenda;
 
