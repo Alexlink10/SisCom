@@ -65,7 +65,6 @@ public class Tela_cliente extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cliente");
 
         jLabel1.setText("Nome:");
 
@@ -172,7 +171,7 @@ public class Tela_cliente extends javax.swing.JFrame {
             .addGap(0, 125, Short.MAX_VALUE)
         );
 
-        tabelaCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabelaCliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -203,15 +202,7 @@ public class Tela_cliente extends javax.swing.JFrame {
             new String [] {
                 "Nome", "CPF", "Telefone", "E-mail", "Rua", "Número", "Bairro", "Cidade", "Estado"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tabelaCliente);
 
         btnLocalizar.setText("Localizar");
@@ -222,11 +213,6 @@ public class Tela_cliente extends javax.swing.JFrame {
         });
 
         btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
 
         btnExcluir.setText("Excluir");
 
@@ -338,9 +324,7 @@ public class Tela_cliente extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         Principal telaPrincipal = new Principal();
-        telaPrincipal.setExtendedState(Principal.MAXIMIZED_BOTH);
         telaPrincipal.setVisible(true);
-        
         dispose();
         
     }//GEN-LAST:event_btnSairActionPerformed
@@ -387,16 +371,6 @@ public class Tela_cliente extends javax.swing.JFrame {
         System.out.println("Clientes adicionados à tabelaCliente");
         
     }//GEN-LAST:event_btnLocalizarActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
