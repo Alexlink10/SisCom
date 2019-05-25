@@ -11,8 +11,8 @@ package Controle;
  */
 public class Cliente {
     
-    private Integer id_usuario;
-    private String senha;
+    private Integer id_cliente;
+    private String nome;
     private String cpf;
     private String telefone;
     private String email;
@@ -22,9 +22,9 @@ public class Cliente {
     private String cidade;
     private String estado;
 
-    public Cliente(Integer id_usuario, String senha, String cpf, String telefone, String email, String rua, String numero, String bairro, String cidade, String estado) {
-        this.id_usuario = id_usuario;
-        this.senha = senha;
+    public Cliente(Integer id_cliente, String nome, String cpf, String telefone, String email, String rua, String numero, String bairro, String cidade, String estado) {
+        this.id_cliente = id_cliente;
+        this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
@@ -38,20 +38,20 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Integer getId_usuario() {
-        return id_usuario;
+    public Integer getId_cliente() {
+        return id_cliente;
     }
 
-    public void setId_usuario(Integer id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setId_cliente(Integer id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getNome() {
+        return nome;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCpf() {

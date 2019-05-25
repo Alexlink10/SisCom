@@ -332,8 +332,6 @@ public class Tela_produto extends javax.swing.JFrame {
         limparcampos();
         JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
         
-        
-        
     }//GEN-LAST:event_jButton_salvarActionPerformed
 
     private void jButton_localizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_localizarActionPerformed
