@@ -171,6 +171,7 @@ public class Tela_cliente extends javax.swing.JFrame {
             .addGap(0, 125, Short.MAX_VALUE)
         );
 
+        tabelaCliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
