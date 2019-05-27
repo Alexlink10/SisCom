@@ -90,18 +90,34 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jTextField_quantidade" min="-2" pref="79" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jTextField_quantidade" pref="79" max="32767" attributes="0"/>
+                      <Component id="jTextField_modelo" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextField_Compra" min="-2" pref="99" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextField_marca" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextField_venda" min="-2" pref="84" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jTextField_descrircao" min="-2" pref="473" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextField_cor" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -115,7 +131,11 @@
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_referencia" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_descrircao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_modelo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_marca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_cor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -143,10 +163,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
+            <Property name="text" type="java.lang.String" value="Modelo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField_descrircao">
+        <Component class="javax.swing.JTextField" name="jTextField_modelo">
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox_tamanho">
           <Properties>
@@ -208,6 +228,23 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_venda">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel7">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Marca:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_marca">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_marcaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cor:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_cor">
         </Component>
       </SubComponents>
     </Container>
@@ -315,17 +352,29 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="23">
+                  <Table columnCount="8" rowCount="23">
                     <Column editable="false" title="Referencias" type="java.lang.Object"/>
-                    <Column editable="false" title="Descris&#xe3;o" type="java.lang.Object"/>
+                    <Column editable="false" title="Modelo" type="java.lang.Object"/>
+                    <Column editable="false" title="Marca" type="java.lang.Object"/>
                     <Column editable="false" title="Tamanho" type="java.lang.Object"/>
                     <Column editable="false" title="Quantidade" type="java.lang.Object"/>
+                    <Column editable="false" title="Cor" type="java.lang.Object"/>
                     <Column editable="false" title="Valor Compra" type="java.lang.Object"/>
-                    <Column editable="false" title="Valor venda" type="java.lang.Object"/>
+                    <Column editable="false" title="Valor Venda" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>

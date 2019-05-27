@@ -5,7 +5,6 @@
  */
 package Telas;
 
-import com.mysql.jdbc.Driver;
 import java.awt.event.KeyEvent;
 import java.net.ConnectException;
 import java.sql.Connection;
@@ -130,7 +129,7 @@ public class Tela_login extends javax.swing.JFrame {
         }else{
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/siscon?useSSL=false","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
                 String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery(query);
@@ -178,7 +177,7 @@ public class Tela_login extends javax.swing.JFrame {
         }else{
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/siscon?useSSL=false","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
                 String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery(query);
@@ -222,7 +221,7 @@ public class Tela_login extends javax.swing.JFrame {
         }else{
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/siscon?useSSL=false","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
                 String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
                 PreparedStatement stmt = conn.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery(query);

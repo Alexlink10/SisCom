@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Alex
+ * @author israe
  */
 public class ProdutoDao {
     
@@ -29,9 +30,32 @@ public class ProdutoDao {
         
     }
     
+    public boolean campoEmBranco (Produto produto){
+        
+        boolean salvar;
+        
+        if(produto.getMarca().equals("")||(produto.getModelo().equals("")|| produto.getCor().equals("") || produto.getValor_compra().equals(0) || produto.getValor_venda().equals(0) || produto.getReferencia().equals(0) || produto.getTamanho().equals(0))){
+            salvar = false;
+            System.out.println("Existem campos que não foram preenchidos!");
+            System.out.println("A tentativa de inclusão de dados falhou!");
+            /*JOptionPane.showMessageDialog(null, "Existem campos que não foram preenchidos!");*/
+        }
+        else
+        {
+            salvar = true;
+            System.out.println("Nenhum campo está em branco!");
+            /*JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");*/
+            
+        }
+        
+        return salvar;
+        
+    }
+    
     public boolean salvar(Produto produto){
     
-        String query = "INSERT INTO produto (referencia,descricao,tamanho,quantidade,valorcompra,valorvenda)VALUES(?,?,?,?,?,?)";
+        String query = "INSERT INTO produto (referencia, modelo, marca, tamanho, quantidade, cor,"
+                + " valor_compra, valor_venda)VALUES(?,?,?,?,?,?,?,?)";
         
         PreparedStatement stmt = null;
         
@@ -39,18 +63,21 @@ public class ProdutoDao {
             
             stmt = conn.prepareStatement(query);
             stmt.setInt(1, produto.getReferencia());
-            stmt.setString(2, produto.getDescricao());
-            stmt.setInt(3, produto.getTamanho());
-            stmt.setFloat(4, produto.getQuantidade());
-            stmt.setFloat(5, produto.getValorcompra());
-            stmt.setFloat(6, produto.getValorvenda());
+            stmt.setString(2, produto.getModelo());
+            stmt.setString(3, produto.getMarca());
+            stmt.setInt(4, produto.getTamanho());
+            stmt.setInt(5, produto.getQuantidade());
+            stmt.setString(6, produto.getCor());
+            stmt.setDouble(7, produto.getValor_compra());
+            stmt.setDouble(8, produto.getValor_venda());
             
             stmt.executeUpdate();
             
-            
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+            /*Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);*/
+            JOptionPane.showMessageDialog(null, "Erro ao salvar!");
+            System.err.println("Erro!" + ex);
             return false;
         }finally{
         
@@ -75,16 +102,17 @@ public class ProdutoDao {
                 Produto produto =  new  Produto();
                 
                 produto.setReferencia(rs.getInt("referencia"));
-                produto.setDescricao(rs.getString("descricao"));
+                produto.setModelo(rs.getString("modelo"));
+                produto.setMarca(rs.getString("marca"));
                 produto.setTamanho(rs.getInt("tamanho"));
                 produto.setQuantidade(rs.getInt("quantidade"));
-                produto.setValorcompra(rs.getFloat("valorcompra"));
-                produto.setValorvenda(rs.getFloat("valorvenda"));
+                produto.setCor(rs.getString("cor"));
+                produto.setValor_compra(rs.getDouble("valor_compra"));
+                produto.setValor_venda(rs.getDouble("valor_venda"));
                 
                 produtos.add(produto);
             }
             
-         
             ConexaoJdbc.closeConnection(conn, stmt, rs);
   
             return produtos;
@@ -96,4 +124,28 @@ public class ProdutoDao {
         
     }
     
+     public boolean excluir (String referencia){
+         
+         String query = "DELETE FROM produto WHERE referencia = " + referencia;
+         
+         System.out.println(query);
+         
+         PreparedStatement stmt = null;
+         
+         try {
+             stmt = conn.prepareStatement(query);
+             stmt.execute();
+             
+             return true;
+         } 
+         catch (SQLException ex) {
+            System.err.println("Erro!" + ex);
+            return false;
+         }
+         finally{
+             ConexaoJdbc.closeConnection(conn, stmt);
+         }
+         
+     }
+     
 }

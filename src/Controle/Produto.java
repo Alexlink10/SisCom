@@ -5,51 +5,56 @@
  */
 package Controle;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author Alex
+ * @author israe
  */
 public class Produto {
    
     private Integer id_produto;
-    private Integer referencia;  //// vata esse em int e foda kkk
-    private String descricao;
+    private Integer referencia;
+    private String modelo;
+    private String marca;
     private Integer tamanho;
     private Integer quantidade;
-    private float valorcompra;
-    private float valorvenda;
+    private String cor;
+    private Double valor_compra;
+    private Double valor_venda;
 
-    public Produto() {
-    
-    }
-
-    public Produto(Integer referencia, String descricao, Integer tamanho, Integer quantidade, float valorcompra, float valorvenda) {
+    public Produto(Integer id_produto, Integer referencia, String modelo, String marca, Integer tamanho, Integer quantidade, String cor, Double valor_compra, Double valor_venda) {
+        this.id_produto = id_produto;
         this.referencia = referencia;
-        this.descricao = descricao;
+        this.modelo = modelo;
+        this.marca = marca;
         this.tamanho = tamanho;
         this.quantidade = quantidade;
-        this.valorcompra = valorcompra;
-        this.valorvenda = valorvenda;
+        this.cor = cor;
+        this.valor_compra = valor_compra;
+        this.valor_venda = valor_venda;
+    }
+
+    public Produto(Integer referencia, String modelo, String marca, Integer tamanho, Integer quantidade, String cor, Double valor_compra, Double valor_venda) {
+        this.referencia = referencia;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.tamanho = tamanho;
+        this.quantidade = quantidade;
+        this.cor = cor;
+        this.valor_compra = valor_compra;
+        this.valor_venda = valor_venda;
     }
     
-    
+    public Produto(){  
+    }
 
-    public Integer getId_produto(){
+    public Integer getId_produto() {
         return id_produto;
     }
-    
-    public void setId_produto(Integer id_produto){
+
+    public void setId_produto(Integer id_produto) {
         this.id_produto = id_produto;
     }
-    
+
     public Integer getReferencia() {
         return referencia;
     }
@@ -58,12 +63,20 @@ public class Produto {
         this.referencia = referencia;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public Integer getTamanho() {
@@ -82,21 +95,28 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public float getValorcompra() {
-        return valorcompra;
+    public String getCor() {
+        return cor;
     }
 
-    public void setValorcompra(float valorcompra) {
-        this.valorcompra = valorcompra;
+    public void setCor(String cor) {
+        this.cor = cor;
     }
 
-    public float getValorvenda() {
-        return valorvenda;
+    public Double getValor_compra() {
+        return valor_compra;
     }
 
-    public void setValorvenda(float valorvenda) {
-        this.valorvenda = valorvenda;
+    public void setValor_compra(Double valor_compra) {
+        this.valor_compra = valor_compra;
     }
-        
+
+    public Double getValor_venda() {
+        return valor_venda;
+    }
+
+    public void setValor_venda(Double valor_venda) {
+        this.valor_venda = valor_venda;
+    }
     
 }
