@@ -6,6 +6,7 @@
 package Telas;
 
 import Controle.Produto;
+import Controle.Usuario;
 import dao.ProdutoDao;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -450,21 +451,25 @@ public class Tela_produto extends javax.swing.JFrame {
 
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
         
-        try {
-            
-            Class.forName("com.jdbc.mysql.Driver");
-            Connection con = DriverManager.getConnection("");
-            String query = "DELETE * from produto where id_produto = ?";
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Tela_produto.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "falha na classe for name"+ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Tela_produto.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "falha com o banco de dados"+ex);
-        }
+        int linha = jTable1.getSelectedRow();
         
+        if (linha < 0){
+            JOptionPane.showMessageDialog(null, "Selecione um produto para poder excluí-lo!");
+        }
+                                                                                                            //linha, coluna.
+        //Especificando para pegar um dado da linha selecionada com o clik do mouse, na coluna 0. getValueAt(linha, 0).
+        String referencia = jTable1.getModel().getValueAt(linha, 0).toString();
+        
+        ProdutoDao pd = new ProdutoDao();
+        
+        if(pd.excluir(referencia) == true){
+            pd.excluir(referencia);
+            JOptionPane.showMessageDialog(null, "Produto de referencia " + referencia + " excluído com sucesso!");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar escluir produto de referencia " + referencia + " !");
+        }
         
     }//GEN-LAST:event_jButton_excluirActionPerformed
 
