@@ -5,7 +5,6 @@
  */
 package Telas;
 
-import com.mysql.jdbc.Driver;
 import java.awt.event.KeyEvent;
 import java.net.ConnectException;
 import java.sql.Connection;
