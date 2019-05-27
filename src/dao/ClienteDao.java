@@ -6,7 +6,6 @@
 package dao;
 
 import Controle.Cliente;
-import Telas.Tela_cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -64,7 +64,7 @@ public class ClienteDao {
     
     public List<Cliente> listarClientes(){
         
-        String sql = "SELECT * FROM cliente";
+        String sql = "SELECT * FROM cliente ";
     
         List<Cliente> clientes = new ArrayList<Cliente>();
         
@@ -76,6 +76,7 @@ public class ClienteDao {
             while(rs.next()){
                 Cliente cliente = new Cliente();
                 //nome, cpf, telefone, email, rua, numero, bairro, cidade, estado
+                cliente.setId_cliente(rs.getInt("id_cliente"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setTelefone(rs.getString("telefone"));
@@ -100,5 +101,63 @@ public class ClienteDao {
         
     }
     
+    public boolean excluir (Cliente cliente){
+        
+        String sql = "DELETE FROM cliente WHERE id_cliente = ?";
+        
+        PreparedStatement stmt = null;
+        
+        try{
+            System.out.println("Iniciando exclusao de dados...");
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,cliente.getId_cliente());
+            
+            stmt.executeUpdate();
+            
+            return true;
+            }    
+            catch (SQLException ex) {
+                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+            finally{
+            System.out.println("Conexão encerrada com o DB.");
+            ConexaoJdbc.closeConnection(conn, stmt);
+            }
+        }
+    public boolean editar (Cliente cliente){
+        
+        String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, email = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE id_cliente = ?";
+        
+        PreparedStatement stmt = null;
+        
+        try{
+            System.out.println("Iniciando update de dados...");
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getTelefone());
+            stmt.setString(4, cliente.getEmail());
+            stmt.setString(5, cliente.getRua());
+            stmt.setString(6, cliente.getNumero());
+            stmt.setString(7, cliente.getBairro());
+            stmt.setString(8, cliente.getCidade());
+            stmt.setString(9, cliente.getEstado());
+            stmt.setInt(10, cliente.getId_cliente());
+            
+            stmt.executeUpdate();
+            
+            return true;
+            }    
+            catch (SQLException ex) {
+                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+            finally{
+            System.out.println("Conexão encerrada com o DB.");
+            ConexaoJdbc.closeConnection(conn, stmt);
+            }
+        }
     
+  
 }

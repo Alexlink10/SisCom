@@ -65,6 +65,7 @@ public class Tela_cliente extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cliente");
 
         jLabel1.setText("Nome:");
 
@@ -174,35 +175,43 @@ public class Tela_cliente extends javax.swing.JFrame {
         tabelaCliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "Telefone", "E-mail", "Rua", "Número", "Bairro", "Cidade", "Estado"
+                "Id Cliente", "Nome", "CPF", "Telefone", "E-mail", "Rua", "Número", "Bairro", "Cidade", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tabelaCliente);
 
         btnLocalizar.setText("Localizar");
@@ -213,8 +222,18 @@ public class Tela_cliente extends javax.swing.JFrame {
         });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -284,7 +303,8 @@ public class Tela_cliente extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(788, 785));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void limparcampos(){
@@ -304,6 +324,9 @@ public class Tela_cliente extends javax.swing.JFrame {
         //nome, cpf, telefone, email, rua, numero, bairro, cidade, estado
         Cliente cliente = new Cliente();
         
+        if (txtNome.getText().equals("") || txtCpf.getText().equals("")){
+        JOptionPane.showMessageDialog(null, "A campos obrigatorios que precisa ser preenchido");
+        }else{
         cliente.setNome(txtNome.getText());
         cliente.setCpf(txtCpf.getText());
         cliente.setTelefone(txtTelefone.getText());
@@ -319,11 +342,13 @@ public class Tela_cliente extends javax.swing.JFrame {
         
         limparcampos();
         JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNome() + " cadastrado(a) com sucesso!");
+        }
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         Principal telaPrincipal = new Principal();
+        telaPrincipal.setExtendedState(Principal.MAXIMIZED_BOTH);
         telaPrincipal.setVisible(true);
         dispose();
         
@@ -338,6 +363,8 @@ public class Tela_cliente extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         
         //referenciando as tabelas do DB, entre "", com as colunas da tabela, na ordem definida na tabela desta tela.
+        
+        modelo.addColumn("id_cliente");
         modelo.addColumn("nome");
         modelo.addColumn("cpf");
         modelo.addColumn("telefone");
@@ -348,21 +375,22 @@ public class Tela_cliente extends javax.swing.JFrame {
         modelo.addColumn("cidade");
         modelo.addColumn("estado");
         
-        Object rowData[] = new Object[9];
+        Object rowData[] = new Object[10];
         
         System.out.println("Pesquisando clientes...");
         
         for(int i=0; i<clientes.size();i++){
             
-            rowData[0] = clientes.get(i).getNome();
-            rowData[1] = clientes.get(i).getCpf();
-            rowData[2] = clientes.get(i).getTelefone();
-            rowData[3] = clientes.get(i).getEmail();
-            rowData[4] = clientes.get(i).getRua();
-            rowData[5] = clientes.get(i).getNumero();
-            rowData[6] = clientes.get(i).getBairro();
-            rowData[7] = clientes.get(i).getCidade();
-            rowData[8] = clientes.get(i).getEstado();
+            rowData[0] = clientes.get(i).getId_cliente();
+            rowData[1] = clientes.get(i).getNome();
+            rowData[2] = clientes.get(i).getCpf();
+            rowData[3] = clientes.get(i).getTelefone();
+            rowData[4] = clientes.get(i).getEmail();
+            rowData[5] = clientes.get(i).getRua();
+            rowData[6] = clientes.get(i).getNumero();
+            rowData[7] = clientes.get(i).getBairro();
+            rowData[8] = clientes.get(i).getCidade();
+            rowData[9] = clientes.get(i).getEstado();
             
             modelo.addRow(rowData); 
         }
@@ -371,6 +399,38 @@ public class Tela_cliente extends javax.swing.JFrame {
         System.out.println("Clientes adicionados à tabelaCliente");
         
     }//GEN-LAST:event_btnLocalizarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       
+        Cliente cliente = new Cliente();
+        Integer linha= tabelaCliente.getSelectedRow();
+        String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
+        
+        cliente.setId_cliente(Integer.parseInt(id));
+       
+       ClienteDao cd = new ClienteDao();
+       cd.excluir(cliente);
+       
+            
+            
+                    
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        
+        Cliente cliente = new Cliente();
+        Integer linha= tabelaCliente.getSelectedRow();
+        String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
+        
+        cliente.setId_cliente(Integer.parseInt(id));
+        ClienteDao cd = new ClienteDao();
+        cd.editar(cliente);
+        
+        
+       
+       
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -124,4 +124,28 @@ public class ProdutoDao {
         
     }
     
+     public boolean excluir (String referencia){
+         
+         String query = "DELETE FROM produto WHERE referencia = " + referencia;
+         
+         System.out.println(query);
+         
+         PreparedStatement stmt = null;
+         
+         try {
+             stmt = conn.prepareStatement(query);
+             stmt.execute();
+             
+             return true;
+         } 
+         catch (SQLException ex) {
+            System.err.println("Erro!" + ex);
+            return false;
+         }
+         finally{
+             ConexaoJdbc.closeConnection(conn, stmt);
+         }
+         
+     }
+     
 }
