@@ -212,6 +212,11 @@ public class Tela_cliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaCliente);
 
         btnLocalizar.setText("Localizar");
@@ -422,15 +427,23 @@ public class Tela_cliente extends javax.swing.JFrame {
         Integer linha= tabelaCliente.getSelectedRow();
         String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
         
+           
         cliente.setId_cliente(Integer.parseInt(id));
         ClienteDao cd = new ClienteDao();
         cd.editar(cliente);
-        
-        
-       
        
         
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
+        
+        if(tabelaCliente.getSelectedRow() != 1){
+            
+            txtNome.setText(tabelaCliente.getValueAt(tabelaCliente.getEditingRow(), 1).toString());
+        
+        }
+        
+    }//GEN-LAST:event_tabelaClienteMouseClicked
 
     /**
      * @param args the command line arguments
