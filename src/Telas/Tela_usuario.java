@@ -12,9 +12,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,6 +29,42 @@ public class Tela_usuario extends javax.swing.JFrame {
      */
     public Tela_usuario() {
         initComponents();
+                UsuarioDao ud = new UsuarioDao();
+        
+        List<Usuario> usuarios = ud.listarUsuario();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("nome");
+        /*modelo.addColumn("login");
+        modelo.addColumn("senha");*/
+        modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object [9];
+        
+        for(int i = 0; i<usuarios.size(); i++){
+            
+            rowData[0] = usuarios.get(i).getNome();
+            rowData[1] = usuarios.get(i).getCpf();
+            rowData[2] = usuarios.get(i).getTelefone();
+            rowData[3] = usuarios.get(i).getEmail();
+            rowData[4] = usuarios.get(i).getRua();
+            rowData[5] = usuarios.get(i).getNumero();
+            rowData[6] = usuarios.get(i).getBairro();
+            rowData[7] = usuarios.get(i).getCidade();
+            rowData[8] = usuarios.get(i).getEstado();
+         
+            modelo.addRow(rowData);
+        }
+        
+        jTable1_usuario.setModel(modelo);
     }
 
     /**
@@ -60,13 +98,13 @@ public class Tela_usuario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField_login = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField_senha = new javax.swing.JTextField();
+        jPasswordField_senha = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jButton_salvar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton_excluir = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnLocalizar = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1_usuario = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -106,26 +144,6 @@ public class Tela_usuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_estado))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_rua)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -150,8 +168,30 @@ public class Tela_usuario extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_senha, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-                            .addComponent(jTextField_email))))
+                                .addComponent(jPasswordField_senha))
+                            .addComponent(jTextField_email)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextField_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_estado))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextField_rua, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,7 +204,7 @@ public class Tela_usuario extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jTextField_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -208,12 +248,17 @@ public class Tela_usuario extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Localizar");
-
-        jButton5.setText("Sair");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnLocalizar.setText("Localizar");
+        btnLocalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnLocalizarActionPerformed(evt);
+            }
+        });
+
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
             }
         });
 
@@ -223,7 +268,7 @@ public class Tela_usuario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addComponent(jButton4)
+                .addComponent(btnLocalizar)
                 .addGap(54, 54, 54)
                 .addComponent(jButton2)
                 .addGap(70, 70, 70)
@@ -231,7 +276,7 @@ public class Tela_usuario extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addComponent(jButton_salvar)
                 .addGap(71, 71, 71)
-                .addComponent(jButton5)
+                .addComponent(btnSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -241,44 +286,44 @@ public class Tela_usuario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton_excluir)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
+                    .addComponent(btnLocalizar)
+                    .addComponent(btnSair)
                     .addComponent(jButton_salvar))
                 .addGap(39, 39, 39))
         );
 
         jTable1_usuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "  Nome", "   Login", "   Senha", "   CPF", " Telefone", "   E-mail", "    Rua", "  Número", "   Bairro", "  Cidade", "   Estado"
+                "  Nome", "   CPF", " Telefone", "   E-mail", "    Rua", "  Número", "   Bairro", "  Cidade", "   Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -296,8 +341,6 @@ public class Tela_usuario extends javax.swing.JFrame {
             jTable1_usuario.getColumnModel().getColumn(6).setResizable(false);
             jTable1_usuario.getColumnModel().getColumn(7).setResizable(false);
             jTable1_usuario.getColumnModel().getColumn(8).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(9).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(10).setResizable(false);
         }
 
         jMenu1.setText("Arquivo");
@@ -330,20 +373,20 @@ public class Tela_usuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         
             Principal tela_princi = new Principal();
             tela_princi.setExtendedState(Principal.MAXIMIZED_BOTH);
             tela_princi.setVisible(true);
             dispose();
         
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
     public void LimparCampos(){
     
     jTextField_nome.setText("");
     jTextField_login.setText("");
-    jTextField_senha.setText("");
+    jPasswordField_senha.setText("");
     jTextField_cpf.setText("");
     jTextField_telefone.setText("");
     jTextField_email.setText("");
@@ -357,12 +400,11 @@ public class Tela_usuario extends javax.swing.JFrame {
     
     private void jButton_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salvarActionPerformed
        
-        
                 Usuario novoUsu = new Usuario();
                 
                 novoUsu.setNome(jTextField_nome.getText());
                 novoUsu.setLogin(jTextField_login.getText());
-                novoUsu.setSenha(jTextField_login.getText());
+                novoUsu.setSenha(jPasswordField_senha.getText());
                 novoUsu.setCpf(jTextField_cpf.getText());
                 novoUsu.setTelefone(jTextField_telefone.getText());
                 novoUsu.setEmail(jTextField_email.getText());
@@ -374,16 +416,21 @@ public class Tela_usuario extends javax.swing.JFrame {
                 
                 UsuarioDao ud = new UsuarioDao();
                 
+                boolean v = ud.campoEmBranco(novoUsu);
+                
+                if(v == true){
                 ud.cadastra(novoUsu);
+                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
+                }
+                else
+                {
+                     JOptionPane.showMessageDialog(null, "Erro ao salvar!");
+                }
                 
                 LimparCampos();
                 
-                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
                 
-        
-        
-        
-        
+                
     }//GEN-LAST:event_jButton_salvarActionPerformed
 String novo;
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
@@ -405,6 +452,47 @@ String novo;
         }
         
     }//GEN-LAST:event_jButton_excluirActionPerformed
+
+    private void btnLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarActionPerformed
+       
+        /*UsuarioDao ud = new UsuarioDao();
+        
+        List<Usuario> usuarios = ud.listarUsuario();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("nome");*/
+        /*modelo.addColumn("login");
+        modelo.addColumn("senha");*/
+        /*modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object [9];
+        
+        for(int i = 0; i<usuarios.size(); i++){
+            
+            rowData[0] = usuarios.get(i).getNome();
+            rowData[1] = usuarios.get(i).getCpf();
+            rowData[2] = usuarios.get(i).getTelefone();
+            rowData[3] = usuarios.get(i).getEmail();
+            rowData[4] = usuarios.get(i).getRua();
+            rowData[5] = usuarios.get(i).getNumero();
+            rowData[6] = usuarios.get(i).getBairro();
+            rowData[7] = usuarios.get(i).getCidade();
+            rowData[8] = usuarios.get(i).getEstado();
+         
+            modelo.addRow(rowData);
+        }
+        
+        jTable1_usuario.setModel(modelo);*/
+        
+    }//GEN-LAST:event_btnLocalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,9 +531,9 @@ String novo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLocalizar;
+    private javax.swing.JButton btnSair;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton_excluir;
     private javax.swing.JButton jButton_salvar;
     private javax.swing.JLabel jLabel1;
@@ -464,6 +552,7 @@ String novo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField_senha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1_usuario;
     private javax.swing.JTextField jTextField_bairro;
@@ -475,7 +564,6 @@ String novo;
     private javax.swing.JTextField jTextField_nome;
     private javax.swing.JTextField jTextField_numero;
     private javax.swing.JTextField jTextField_rua;
-    private javax.swing.JTextField jTextField_senha;
     private javax.swing.JTextField jTextField_telefone;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Alex
+ * @author israe
  */
 public class Tela_produto extends javax.swing.JFrame {
 
@@ -179,6 +179,11 @@ public class Tela_produto extends javax.swing.JFrame {
         });
 
         jButton_editar.setText("Editar");
+        jButton_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_editarActionPerformed(evt);
+            }
+        });
 
         jButton_excluir.setText("Excluir");
         jButton_excluir.addActionListener(new java.awt.event.ActionListener() {
@@ -337,6 +342,8 @@ public class Tela_produto extends javax.swing.JFrame {
     public void limparcampos(){
     
         jTextField_referencia.setText("");
+        jTextField_marca.setText("");
+        jTextField_cor.setText("");
         jTextField_modelo.setText("");
         jComboBox_tamanho.setName("");
         jTextField_quantidade.setText("");
@@ -468,7 +475,7 @@ public class Tela_produto extends javax.swing.JFrame {
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Erro ao tentar escluir produto de referencia " + referencia + " !");
+            JOptionPane.showMessageDialog(null, "Erro ao tentar excluir produto de referencia " + referencia + " !");
         }
         
     }//GEN-LAST:event_jButton_excluirActionPerformed
@@ -476,6 +483,59 @@ public class Tela_produto extends javax.swing.JFrame {
     private void jTextField_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_marcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_marcaActionPerformed
+
+    private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
+        
+        int linha = jTable1.getSelectedRow();
+        
+        if (linha < 0){
+            JOptionPane.showMessageDialog(null, "Selecione um produto para poder editá-lo!");
+        }
+        
+        String referencia = jTable1.getModel().getValueAt(linha, 0).toString();
+        
+        Produto produto = new Produto();
+        
+        //if (jTextField_referencia.getText() != produto.getReferencia().toString()){
+            produto.setReferencia(Integer.parseInt(jTextField_referencia.getText()));
+        //}
+        //else if (jTextField_modelo.getText() != produto.getModelo()){
+            produto.setModelo(jTextField_modelo.getText());
+        //}
+        //else if (jTextField_marca.getText() != produto.getMarca()){
+            produto.setMarca(jTextField_marca.getText());
+        //}
+        //else if (jComboBox_tamanho.getSelectedItem() != produto.getTamanho()){
+            produto.setTamanho(Integer.parseInt((String) jComboBox_tamanho.getSelectedItem()));
+        //}
+        //else if (jTextField_quantidade.getText() != produto.getQuantidade().toString()){
+            produto.setQuantidade(Integer.parseInt(jTextField_quantidade.getText()));
+        //}
+        //else if (jTextField_cor.getText() != produto.getCor()){
+            produto.setCor(jTextField_cor.getText());
+        //}
+        //else if (jTextField_Compra.getText() != produto.getValor_compra().toString()){
+            produto.setValor_compra(Double.parseDouble(jTextField_Compra.getText()));
+        //}
+        //else if(jTextField_venda.getText() != produto.getValor_venda().toString()){
+            produto.setValor_venda(Double.parseDouble(jTextField_venda.getText()));
+        //}
+        
+        ProdutoDao pd = new ProdutoDao();
+        
+        if(pd.editar(produto, referencia) == true){
+            pd.editar(produto, referencia);
+            JOptionPane.showMessageDialog(null, "Produto de referencia " + referencia + " alterado com sucesso!");
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar editar produto de referencia " + referencia + " !");
+        }
+        
+        limparcampos();
+        
+    }//GEN-LAST:event_jButton_editarActionPerformed
 
     /**
      * @param args the command line arguments
