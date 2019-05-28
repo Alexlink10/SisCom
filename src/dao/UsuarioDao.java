@@ -56,7 +56,7 @@ public class UsuarioDao {
         
     }
     
-    public boolean cadastra (Usuario usuario){
+    public boolean salvar (Usuario usuario){
     
         String query = "INSERT INTO usuario(nome, login, senha, cpf, telefone, email, rua, numero, bairro, cidade, estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         
@@ -103,9 +103,10 @@ public class UsuarioDao {
             while(rs.next()){
                 Usuario usuario = new Usuario();
                 
+                usuario.setId_usuario(rs.getInt("id_usuario"));
                 usuario.setNome(rs.getString("nome"));
-                /*usuario.setLogin(rs.getString("login"));
-                usuario.setSenha(rs.getString("senha"));*/
+                usuario.setLogin(rs.getString("login"));
+                usuario.setSenha(rs.getString("senha"));
                 usuario.setCpf(rs.getString("cpf"));
                 usuario.setTelefone(rs.getString("telefone"));
                 usuario.setEmail(rs.getString("email"));
@@ -124,6 +125,29 @@ public class UsuarioDao {
             
         } catch (SQLException ex) {
             throw  new  RuntimeException (ex);
+        }
+        finally{
+            ConexaoJdbc.closeConnection(conn, stmt);
+        }
+        
+    }
+    
+    public boolean excluir (String id){
+        
+        String query = "DELETE FROM usuario WHERE id_usuario = " + id;
+        
+        System.out.println(query);
+        
+        PreparedStatement stmt = null;
+        
+        try{
+            stmt = conn.prepareStatement(query);
+            stmt.execute();
+            
+            return true;
+        } catch (SQLException ex) {
+            System.err.println("Erro!" + ex);
+            return false;
         }
         finally{
             ConexaoJdbc.closeConnection(conn, stmt);

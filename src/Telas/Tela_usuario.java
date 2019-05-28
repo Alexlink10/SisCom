@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Alex
+ * @author Israel
  */
 public class Tela_usuario extends javax.swing.JFrame {
 
@@ -29,42 +29,7 @@ public class Tela_usuario extends javax.swing.JFrame {
      */
     public Tela_usuario() {
         initComponents();
-                UsuarioDao ud = new UsuarioDao();
         
-        List<Usuario> usuarios = ud.listarUsuario();
-        
-        DefaultTableModel modelo = new DefaultTableModel();
-        
-        modelo.addColumn("nome");
-        /*modelo.addColumn("login");
-        modelo.addColumn("senha");*/
-        modelo.addColumn("cpf");
-        modelo.addColumn("telefone");
-        modelo.addColumn("email");
-        modelo.addColumn("rua");
-        modelo.addColumn("numero");
-        modelo.addColumn("bairro");
-        modelo.addColumn("cidade");
-        modelo.addColumn("estado");
-        
-        Object rowData[] = new Object [9];
-        
-        for(int i = 0; i<usuarios.size(); i++){
-            
-            rowData[0] = usuarios.get(i).getNome();
-            rowData[1] = usuarios.get(i).getCpf();
-            rowData[2] = usuarios.get(i).getTelefone();
-            rowData[3] = usuarios.get(i).getEmail();
-            rowData[4] = usuarios.get(i).getRua();
-            rowData[5] = usuarios.get(i).getNumero();
-            rowData[6] = usuarios.get(i).getBairro();
-            rowData[7] = usuarios.get(i).getCidade();
-            rowData[8] = usuarios.get(i).getEstado();
-         
-            modelo.addRow(rowData);
-        }
-        
-        jTable1_usuario.setModel(modelo);
     }
 
     /**
@@ -294,36 +259,36 @@ public class Tela_usuario extends javax.swing.JFrame {
 
         jTable1_usuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "  Nome", "   CPF", " Telefone", "   E-mail", "    Rua", "  Número", "   Bairro", "  Cidade", "   Estado"
+                "ID", "Nome", "Login", "Senha", "CPF", "Telefone", "E-mail", "Rua", "Número", "Bairro", "Cidade", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -333,14 +298,7 @@ public class Tela_usuario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1_usuario);
         if (jTable1_usuario.getColumnModel().getColumnCount() > 0) {
             jTable1_usuario.getColumnModel().getColumn(0).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(1).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(2).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(3).setResizable(false);
             jTable1_usuario.getColumnModel().getColumn(4).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(5).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(6).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(7).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(8).setResizable(false);
         }
 
         jMenu1.setText("Arquivo");
@@ -419,7 +377,7 @@ public class Tela_usuario extends javax.swing.JFrame {
                 boolean v = ud.campoEmBranco(novoUsu);
                 
                 if(v == true){
-                ud.cadastra(novoUsu);
+                ud.salvar(novoUsu);
                 JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
                 }
                 else
@@ -429,42 +387,44 @@ public class Tela_usuario extends javax.swing.JFrame {
                 
                 LimparCampos();
                 
-                
-                
     }//GEN-LAST:event_jButton_salvarActionPerformed
 String novo;
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
         
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/siscom?useSSL=false","root","root");
-            String query ="DELETE where id_usuario=?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Tela_usuario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showInternalMessageDialog(this, "Class não encontrada!");
-        } catch (SQLException ex) {
-            Logger.getLogger(Tela_usuario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Falha com o banco!");
+        int linha = jTable1_usuario.getSelectedRow();
+        
+        if(linha < 0){
+            JOptionPane.showMessageDialog(null, "Selecione um usuario para poder excluí-lo!");
         }
+        
+        String id = jTable1_usuario.getModel().getValueAt(linha, 0).toString();
+        
+        UsuarioDao ud = new UsuarioDao();
+        
+        if(ud.excluir(id) == true){
+            ud.excluir(id);
+            JOptionPane.showMessageDialog(null, "usuario portador do ID " + id + " excluído com sucesso!");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar excluir usuario portador do ID " + id + " !");
+        }    
         
     }//GEN-LAST:event_jButton_excluirActionPerformed
 
     private void btnLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarActionPerformed
        
-        /*UsuarioDao ud = new UsuarioDao();
+        UsuarioDao ud = new UsuarioDao();
         
         List<Usuario> usuarios = ud.listarUsuario();
         
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.addColumn("nome");*/
-        /*modelo.addColumn("login");
-        modelo.addColumn("senha");*/
-        /*modelo.addColumn("cpf");
+        modelo.addColumn("id_usuario");
+        modelo.addColumn("nome");
+        modelo.addColumn("login");
+        modelo.addColumn("senha");
+        modelo.addColumn("cpf");
         modelo.addColumn("telefone");
         modelo.addColumn("email");
         modelo.addColumn("rua");
@@ -473,24 +433,27 @@ String novo;
         modelo.addColumn("cidade");
         modelo.addColumn("estado");
         
-        Object rowData[] = new Object [9];
+        Object rowData[] = new Object [12];
         
         for(int i = 0; i<usuarios.size(); i++){
             
-            rowData[0] = usuarios.get(i).getNome();
-            rowData[1] = usuarios.get(i).getCpf();
-            rowData[2] = usuarios.get(i).getTelefone();
-            rowData[3] = usuarios.get(i).getEmail();
-            rowData[4] = usuarios.get(i).getRua();
-            rowData[5] = usuarios.get(i).getNumero();
-            rowData[6] = usuarios.get(i).getBairro();
-            rowData[7] = usuarios.get(i).getCidade();
-            rowData[8] = usuarios.get(i).getEstado();
+            rowData[0] = usuarios.get(i).getId_usuario();
+            rowData[1] = usuarios.get(i).getNome();
+            rowData[2] = usuarios.get(i).getLogin();
+            rowData[3] = usuarios.get(i).getSenha();
+            rowData[4] = usuarios.get(i).getCpf();
+            rowData[5] = usuarios.get(i).getTelefone();
+            rowData[6] = usuarios.get(i).getEmail();
+            rowData[7] = usuarios.get(i).getRua();
+            rowData[8] = usuarios.get(i).getNumero();
+            rowData[9] = usuarios.get(i).getBairro();
+            rowData[10] = usuarios.get(i).getCidade();
+            rowData[11] = usuarios.get(i).getEstado();
          
             modelo.addRow(rowData);
         }
         
-        jTable1_usuario.setModel(modelo);*/
+        jTable1_usuario.setModel(modelo);
         
     }//GEN-LAST:event_btnLocalizarActionPerformed
 
