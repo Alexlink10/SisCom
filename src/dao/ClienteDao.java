@@ -125,9 +125,9 @@ public class ClienteDao {
             ConexaoJdbc.closeConnection(conn, stmt);
             }
         }
-    public boolean editar (Cliente cliente){
+    public boolean editar (Cliente cliente, String id){
         
-        String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, email = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE id_cliente = ?";
+        String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, email = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE id_cliente = " + id;
         
         PreparedStatement stmt = null;
         
@@ -143,7 +143,6 @@ public class ClienteDao {
             stmt.setString(7, cliente.getBairro());
             stmt.setString(8, cliente.getCidade());
             stmt.setString(9, cliente.getEstado());
-            stmt.setInt(10, cliente.getId_cliente());
             
             stmt.executeUpdate();
             

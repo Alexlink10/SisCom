@@ -124,42 +124,7 @@ public class Tela_login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
-        }else{
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
-                String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery(query);
-                rs.next();
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
-                if (jTextField_login.getText().equals(login)&& jPasswordField_senha.getText().equals(senha)){
-                    
-                    Principal tela_princi = new Principal();
-                    tela_princi.setExtendedState(Principal.MAXIMIZED_BOTH);
-                    tela_princi.setVisible(true);
-                    dispose();
-                
-                }else{
-                
-                    JOptionPane.showMessageDialog(this, "Senha ivalida!");
-                    
-                }
-                stmt.close();
-                conn.close();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Falha na conexao do class for name");
-            } catch (SQLException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
-            }
-        
-        }
+       
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -175,37 +140,15 @@ public class Tela_login extends javax.swing.JFrame {
         if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
         }else{
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
-                String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery(query);
-                rs.next();
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
-                if (jTextField_login.getText().equals(login)&& jPasswordField_senha.getText().equals(senha)){
-                    
-                    Principal tela_princi = new Principal();
-                    tela_princi.setExtendedState(Principal.MAXIMIZED_BOTH);
-                    tela_princi.setVisible(true);
-                    dispose();
-                
-                }else{
-                
-                    JOptionPane.showMessageDialog(this, "Senha ivalida!");
-                    
-                }
-                stmt.close();
-                conn.close();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Falha na conexao do class for name");
-            } catch (SQLException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
+            
+            
+            
+            
+             
+               
                 JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
-            }
+                
+            
         
         }
         }
@@ -219,37 +162,15 @@ public class Tela_login extends javax.swing.JFrame {
         if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
         }else{
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
-                String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery(query);
-                rs.next();
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
-                if (jTextField_login.getText().equals(login)&& jPasswordField_senha.getText().equals(senha)){
-                    
-                    Principal tela_princi = new Principal();
-                    tela_princi.setExtendedState(Principal.MAXIMIZED_BOTH);
-                    tela_princi.setVisible(true);
-                    dispose();
                 
-                }else{
                 
-                    JOptionPane.showMessageDialog(this, "Senha ivalida!");
-                    
-                }
-                stmt.close();
-                conn.close();
                 
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Falha na conexao do class for name");
-            } catch (SQLException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
+                
+            
+               
                 JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
-            }
+                
+            
         
         }
         }

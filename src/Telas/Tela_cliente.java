@@ -172,7 +172,6 @@ public class Tela_cliente extends javax.swing.JFrame {
             .addGap(0, 125, Short.MAX_VALUE)
         );
 
-        tabelaCliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -210,6 +209,11 @@ public class Tela_cliente extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClienteMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaCliente);
@@ -402,35 +406,63 @@ public class Tela_cliente extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
        
-        Cliente cliente = new Cliente();
-        Integer linha= tabelaCliente.getSelectedRow();
-        String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
+       Cliente cliente = new Cliente();
+       Integer linha= tabelaCliente.getSelectedRow();
+       String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
         
-        cliente.setId_cliente(Integer.parseInt(id));
+       cliente.setId_cliente(Integer.parseInt(id));
        
        ClienteDao cd = new ClienteDao();
-       cd.excluir(cliente);
-       
-            
-            
-                    
+     cd.excluir(cliente);  
+     
+     
+     
+     
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
-        Cliente cliente = new Cliente();
+
+        // não ta pronto 
         Integer linha= tabelaCliente.getSelectedRow();
+        if (linha < 0){
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para poder excluí-lo!");
+        }
+        
         String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
         
-        cliente.setId_cliente(Integer.parseInt(id));
+
+       
+        Cliente cliente = new Cliente();            
+        cliente.setNome(txtNome.getText());
+        cliente.setCpf(txtCpf.getText());
+        cliente.setTelefone(txtTelefone.getText());
+        cliente.setEmail(txtEmail.getText());
+        cliente.setRua(txtRua.getText());
+        cliente.setNumero(txtNumero.getText());
+        cliente.setBairro(txtBairro.getText());
+        cliente.setCidade(txtCidade.getText());
+        cliente.setEstado(txtEstado.getText());
+        
         ClienteDao cd = new ClienteDao();
-        cd.editar(cliente);
+        if(cd.editar(cliente, id) == true){
+            cd.editar(cliente, id);
+            JOptionPane.showMessageDialog(null, "Cliente de id nº " + id + " alterado com sucesso!");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar editar cliente de id nº " + id + "!");
+        }
         
-        
-       
-       
+        limparcampos();
         
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
+ 
+        
+        
+        
+    }//GEN-LAST:event_tabelaClienteMouseClicked
 
     /**
      * @param args the command line arguments
