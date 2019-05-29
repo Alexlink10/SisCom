@@ -148,4 +148,41 @@ public class ProdutoDao {
          
      }
      
+     public boolean editar (Produto produto, String referencia){
+         /*
+         String query = "UPDATE produto SET referencia=?, modelo=?, marca=?, tamanho=?, quantidade=?, cor=?,"
+                + " valor_compra=?, valor_venda=? WHERE referencia = " + referencia;
+         
+         PreparedStatement stmt = null;
+         
+         try{
+             stmt = conn.prepareStatement(query);
+             
+             stmt.setInt(1, produto.getReferencia());
+             stmt.setString(2, produto.getModelo());
+             stmt.setString(3, produto.getMarca());
+             stmt.setInt(4, produto.getTamanho());
+             stmt.setInt(5, produto.getQuantidade());
+             stmt.setString(6, produto.getCor());
+             stmt.setDouble(7, produto.getValor_compra());
+             stmt.setDouble(8, produto.getValor_venda());
+             
+             stmt.execute();
+             
+             ConexaoJdbc.closeConnection(conn, stmt);
+             
+            return true; 
+             
+         } catch (SQLException ex) {
+            System.err.println("Erro!" + ex);
+            return false; 
+         }
+         finally{
+             ConexaoJdbc.closeConnection(conn, stmt);
+             System.out.println("conexão encerrada!");
+         }
+         */
+         return true;
+     }
+     
 }
