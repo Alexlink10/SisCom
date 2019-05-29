@@ -5,7 +5,6 @@
  */
 package dao;
 
-
 import Controle.Usuario;
 import java.net.ConnectException;
 import java.sql.Connection;
@@ -151,6 +150,39 @@ public class UsuarioDao {
         }
         finally{
             ConexaoJdbc.closeConnection(conn, stmt);
+        }
+        
+    }
+    
+    public boolean login(String login, String senha){
+        
+        String query = "SELECT * FROM usuario WHERE login = '" + login + "' AND senha = '" + senha + "'";
+        
+        PreparedStatement stmt = null;
+        
+        try{
+            stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            String loginDB = rs.getString("login");
+            String senhaDB = rs.getString("senha");
+            
+            stmt.execute();
+            
+            ConexaoJdbc.closeConnection(conn, stmt, rs);
+            
+            if(login.equals(loginDB) && senha.equals(senhaDB)){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro!" + ex);
+            ConexaoJdbc.closeConnection(conn, stmt);
+            return false;
         }
         
     }

@@ -5,20 +5,13 @@
  */
 package Telas;
 
+import dao.UsuarioDao;
 import java.awt.event.KeyEvent;
-import java.net.ConnectException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Alex
+ * @author Israel
  */
 public class Tela_login extends javax.swing.JFrame {
 
@@ -122,45 +115,37 @@ public class Tela_login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void limpaTela(){
+        jTextField_login.setText("");
+        jPasswordField_senha.setText("");
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
-        }else{
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
-                String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery(query);
-                rs.next();
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
-                if (jTextField_login.getText().equals(login)&& jPasswordField_senha.getText().equals(senha)){
-                    
-                    Principal tela_princi = new Principal();
-                    tela_princi.setExtendedState(Principal.MAXIMIZED_BOTH);
-                    tela_princi.setVisible(true);
-                    dispose();
-                
-                }else{
-                
-                    JOptionPane.showMessageDialog(this, "Senha ivalida!");
-                    
-                }
-                stmt.close();
-                conn.close();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Falha na conexao do class for name");
-            } catch (SQLException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
-            }
-        
         }
-        
+        else
+        {
+            String login = jTextField_login.getText();
+            String senha = jPasswordField_senha.getText();
+            
+            UsuarioDao ud = new UsuarioDao();
+            
+            boolean testeConexao = ud.login(login, senha);
+            
+            if(testeConexao == true){
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                principal.setExtendedState(Principal.MAXIMIZED_BOTH);
+                dispose();
+            }
+            else
+            {
+                limpaTela();
+                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.\nTente novamente!");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -172,89 +157,62 @@ public class Tela_login extends javax.swing.JFrame {
        
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
         
-        if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
-        }else{
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
-                String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery(query);
-                rs.next();
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
-                if (jTextField_login.getText().equals(login)&& jPasswordField_senha.getText().equals(senha)){
-                    
-                    Principal tela_princi = new Principal();
-                    tela_princi.setExtendedState(Principal.MAXIMIZED_BOTH);
-                    tela_princi.setVisible(true);
-                    dispose();
-                
-                }else{
-                
-                    JOptionPane.showMessageDialog(this, "Senha ivalida!");
-                    
-                }
-                stmt.close();
-                conn.close();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Falha na conexao do class for name");
-            } catch (SQLException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
+            if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
             }
-        
-        }
-        }
-        
+            else
+            {
+            String login = jTextField_login.getText();
+            String senha = jPasswordField_senha.getText();
+            
+            UsuarioDao ud = new UsuarioDao();
+            
+            boolean testeConexao = ud.login(login, senha);
+            
+                if(testeConexao == true){
+                    Principal principal = new Principal();
+                    principal.setVisible(true);
+                    principal.setExtendedState(Principal.MAXIMIZED_BOTH);
+                    dispose();
+                }
+                else
+                {
+                    limpaTela();
+                    JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.\nTente novamente!");
+                }  
+            }
+        } 
     }//GEN-LAST:event_jPasswordField_senhaKeyPressed
 
     private void jTextField_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_loginKeyPressed
         
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
         
-        if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
-        }else{
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/siscon?useSSL=false", "root", "root");
-                String query = "SELECT * FROM usuario where login='"+jTextField_login.getText()+"'";
-                PreparedStatement stmt = conn.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery(query);
-                rs.next();
-                String login = rs.getString("login");
-                String senha = rs.getString("senha");
-                if (jTextField_login.getText().equals(login)&& jPasswordField_senha.getText().equals(senha)){
-                    
-                    Principal tela_princi = new Principal();
-                    tela_princi.setExtendedState(Principal.MAXIMIZED_BOTH);
-                    tela_princi.setVisible(true);
-                    dispose();
-                
-                }else{
-                
-                    JOptionPane.showMessageDialog(this, "Senha ivalida!");
-                    
-                }
-                stmt.close();
-                conn.close();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Falha na conexao do class for name");
-            } catch (SQLException ex) {
-                Logger.getLogger(Tela_login.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
+            if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
             }
-        
-        }
-        }
-        
-        
+            else
+            {
+                String login = jTextField_login.getText();
+                String senha = jPasswordField_senha.getText();
+            
+                UsuarioDao ud = new UsuarioDao();
+            
+                boolean testeConexao = ud.login(login, senha);
+            
+                if(testeConexao == true){
+                    Principal principal = new Principal();
+                    principal.setVisible(true);
+                    principal.setExtendedState(Principal.MAXIMIZED_BOTH);
+                    dispose();
+                }
+                else
+                {
+                    limpaTela();
+                    JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.\nTente novamente!");
+                }
+            }  
+        } 
     }//GEN-LAST:event_jTextField_loginKeyPressed
 
     /**
