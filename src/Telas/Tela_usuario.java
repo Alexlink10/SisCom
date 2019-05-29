@@ -66,7 +66,7 @@ public class Tela_usuario extends javax.swing.JFrame {
         jPasswordField_senha = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jButton_salvar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton_editar = new javax.swing.JButton();
         jButton_excluir = new javax.swing.JButton();
         btnLocalizar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
@@ -204,7 +204,12 @@ public class Tela_usuario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Editar");
+        jButton_editar.setText("Editar");
+        jButton_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_editarActionPerformed(evt);
+            }
+        });
 
         jButton_excluir.setText("Excluir");
         jButton_excluir.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +240,7 @@ public class Tela_usuario extends javax.swing.JFrame {
                 .addGap(110, 110, 110)
                 .addComponent(btnLocalizar)
                 .addGap(54, 54, 54)
-                .addComponent(jButton2)
+                .addComponent(jButton_editar)
                 .addGap(70, 70, 70)
                 .addComponent(jButton_excluir)
                 .addGap(63, 63, 63)
@@ -249,7 +254,7 @@ public class Tela_usuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(jButton_editar)
                     .addComponent(jButton_excluir)
                     .addComponent(btnLocalizar)
                     .addComponent(btnSair)
@@ -259,46 +264,55 @@ public class Tela_usuario extends javax.swing.JFrame {
 
         jTable1_usuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Login", "Senha", "CPF", "Telefone", "E-mail", "Rua", "Número", "Bairro", "Cidade", "Estado"
+                "ID", "Nome", "Login", "CPF", "Telefone", "E-mail", "Rua", "Número", "Bairro", "Cidade", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable1_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1_usuarioMouseClicked(evt);
+            }
+        });
+        jTable1_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1_usuarioKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1_usuario);
         if (jTable1_usuario.getColumnModel().getColumnCount() > 0) {
             jTable1_usuario.getColumnModel().getColumn(0).setResizable(false);
-            jTable1_usuario.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jMenu1.setText("Arquivo");
@@ -358,7 +372,8 @@ public class Tela_usuario extends javax.swing.JFrame {
     
     private void jButton_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salvarActionPerformed
        
-                Usuario novoUsu = new Usuario();
+        
+            Usuario novoUsu = new Usuario();
                 
                 novoUsu.setNome(jTextField_nome.getText());
                 novoUsu.setLogin(jTextField_login.getText());
@@ -388,7 +403,7 @@ public class Tela_usuario extends javax.swing.JFrame {
                 LimparCampos();
                 
     }//GEN-LAST:event_jButton_salvarActionPerformed
-String novo;
+//String novo;
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
         
         int linha = jTable1_usuario.getSelectedRow();
@@ -437,6 +452,7 @@ String novo;
         
         for(int i = 0; i<usuarios.size(); i++){
             
+            
             rowData[0] = usuarios.get(i).getId_usuario();
             rowData[1] = usuarios.get(i).getNome();
             rowData[2] = usuarios.get(i).getLogin();
@@ -456,6 +472,97 @@ String novo;
         jTable1_usuario.setModel(modelo);
         
     }//GEN-LAST:event_btnLocalizarActionPerformed
+
+    private void jTable1_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1_usuarioMouseClicked
+
+        
+        int linha = jTable1_usuario.getSelectedRow();
+        String id = jTable1_usuario.getModel().getValueAt(linha, 0).toString();
+        String nome = jTable1_usuario.getModel().getValueAt(linha, 1).toString();
+        String login = jTable1_usuario.getModel().getValueAt(linha, 2).toString();
+        String senha = jTable1_usuario.getModel().getValueAt(linha, 3).toString();
+        String cpf = jTable1_usuario.getModel().getValueAt(linha, 4).toString();
+        String telefone = jTable1_usuario.getModel().getValueAt(linha, 5).toString();
+        String email = jTable1_usuario.getModel().getValueAt(linha, 6).toString();
+        String rua = jTable1_usuario.getModel().getValueAt(linha, 7).toString();
+        String numero = jTable1_usuario.getModel().getValueAt(linha, 8).toString();
+        String bairro = jTable1_usuario.getModel().getValueAt(linha, 9).toString();
+        String cidade = jTable1_usuario.getModel().getValueAt(linha, 10).toString();
+        String estado = jTable1_usuario.getModel().getValueAt(linha, 11).toString();
+        
+        jTextField_nome.setText(nome);
+        jTextField_login.setText(login);
+        jPasswordField_senha.setText(senha);
+        jTextField_cpf.setText(cpf);
+        jTextField_telefone.setText(telefone);
+        jTextField_email.setText(email);
+        jTextField_rua.setText(rua);
+        jTextField_numero.setText(numero);
+        jTextField_bairro.setText(bairro);
+        jTextField_cidade.setText(cidade);
+        jTextField_estado.setText(estado);
+        
+    }//GEN-LAST:event_jTable1_usuarioMouseClicked
+
+    private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
+ 
+        
+        int linha = jTable1_usuario.getSelectedRow();
+        String id = jTable1_usuario.getModel().getValueAt(linha,0).toString();
+        
+        Usuario novoUsu = new Usuario();
+        
+                novoUsu.setNome(jTextField_nome.getText());
+                novoUsu.setLogin(jTextField_login.getText());
+                novoUsu.setSenha(jPasswordField_senha.getText());
+                novoUsu.setCpf(jTextField_cpf.getText());
+                novoUsu.setTelefone(jTextField_telefone.getText());
+                novoUsu.setEmail(jTextField_email.getText());
+                novoUsu.setRua(jTextField_rua.getText());
+                novoUsu.setNumero(jTextField_numero.getText());
+                novoUsu.setBairro(jTextField_bairro.getText());
+                novoUsu.setCidade(jTextField_cidade.getText());
+                novoUsu.setEstado(jTextField_estado.getText());
+                novoUsu.setId_usuario(Integer.parseInt(id));
+                
+                UsuarioDao ud = new UsuarioDao();
+        ud.editar(novoUsu);
+        
+     
+        
+    }//GEN-LAST:event_jButton_editarActionPerformed
+
+    private void jTable1_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1_usuarioKeyReleased
+       
+         int linha = jTable1_usuario.getSelectedRow();
+        String id = jTable1_usuario.getModel().getValueAt(linha, 0).toString();
+        String nome = jTable1_usuario.getModel().getValueAt(linha, 1).toString();
+        String login = jTable1_usuario.getModel().getValueAt(linha, 2).toString();
+        String senha = jTable1_usuario.getModel().getValueAt(linha, 3).toString();
+        String cpf = jTable1_usuario.getModel().getValueAt(linha, 4).toString();
+        String telefone = jTable1_usuario.getModel().getValueAt(linha, 5).toString();
+        String email = jTable1_usuario.getModel().getValueAt(linha, 6).toString();
+        String rua = jTable1_usuario.getModel().getValueAt(linha, 7).toString();
+        String numero = jTable1_usuario.getModel().getValueAt(linha, 8).toString();
+        String bairro = jTable1_usuario.getModel().getValueAt(linha, 9).toString();
+        String cidade = jTable1_usuario.getModel().getValueAt(linha, 10).toString();
+        String estado = jTable1_usuario.getModel().getValueAt(linha, 11).toString();
+        
+        jTextField_nome.setText(nome);
+        jTextField_login.setText(login);
+        jPasswordField_senha.setText(senha);
+        jTextField_cpf.setText(cpf);
+        jTextField_telefone.setText(telefone);
+        jTextField_email.setText(email);
+        jTextField_rua.setText(rua);
+        jTextField_numero.setText(numero);
+        jTextField_bairro.setText(bairro);
+        jTextField_cidade.setText(cidade);
+        jTextField_estado.setText(estado);
+        
+        
+        
+    }//GEN-LAST:event_jTable1_usuarioKeyReleased
 
     /**
      * @param args the command line arguments
@@ -496,7 +603,7 @@ String novo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLocalizar;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton_editar;
     private javax.swing.JButton jButton_excluir;
     private javax.swing.JButton jButton_salvar;
     private javax.swing.JLabel jLabel1;

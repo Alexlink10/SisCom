@@ -211,6 +211,11 @@ public class Tela_cliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaCliente);
 
         btnLocalizar.setText("Localizar");
@@ -408,22 +413,26 @@ public class Tela_cliente extends javax.swing.JFrame {
        cliente.setId_cliente(Integer.parseInt(id));
        
        ClienteDao cd = new ClienteDao();
-       cd.excluir(cliente); 
-                    
+     cd.excluir(cliente);  
+     
+     
+     
+     
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
+        // não ta pronto 
         Integer linha= tabelaCliente.getSelectedRow();
-        
         if (linha < 0){
             JOptionPane.showMessageDialog(null, "Selecione um cliente para poder excluí-lo!");
         }
         
         String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
         
-        Cliente cliente = new Cliente();
-        
+
+       
+        Cliente cliente = new Cliente();            
         cliente.setNome(txtNome.getText());
         cliente.setCpf(txtCpf.getText());
         cliente.setTelefone(txtTelefone.getText());
@@ -435,7 +444,6 @@ public class Tela_cliente extends javax.swing.JFrame {
         cliente.setEstado(txtEstado.getText());
         
         ClienteDao cd = new ClienteDao();
-        
         if(cd.editar(cliente, id) == true){
             cd.editar(cliente, id);
             JOptionPane.showMessageDialog(null, "Cliente de id nº " + id + " alterado com sucesso!");
@@ -448,6 +456,13 @@ public class Tela_cliente extends javax.swing.JFrame {
         limparcampos();
         
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
+ 
+        
+        
+        
+    }//GEN-LAST:event_tabelaClienteMouseClicked
 
     /**
      * @param args the command line arguments

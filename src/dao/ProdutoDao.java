@@ -149,7 +149,7 @@ public class ProdutoDao {
      }
      
      public boolean editar (Produto produto, String referencia){
-         
+         /*
          String query = "UPDATE produto SET referencia=?, modelo=?, marca=?, tamanho=?, quantidade=?, cor=?,"
                 + " valor_compra=?, valor_venda=? WHERE referencia = " + referencia;
          
@@ -181,7 +181,8 @@ public class ProdutoDao {
              ConexaoJdbc.closeConnection(conn, stmt);
              System.out.println("conexão encerrada!");
          }
-         
+         */
+         return true;
      }
      
 }

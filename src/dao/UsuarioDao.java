@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -154,6 +155,7 @@ public class UsuarioDao {
         
     }
     
+<<<<<<< HEAD
     public boolean login(String login, String senha){
         
         String query = "SELECT * FROM usuario WHERE login = '" + login + "' AND senha = '" + senha + "'";
@@ -183,6 +185,40 @@ public class UsuarioDao {
             System.err.println("Erro!" + ex);
             ConexaoJdbc.closeConnection(conn, stmt);
             return false;
+=======
+    
+    public boolean editar (Usuario usuario){
+    
+        String query = "UPDATE usuario SET nome = ?, login = ?, senha = ?, cpf = ?, telefone = ?, email = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE id_usuario = ?";
+        
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getLogin());
+            stmt.setString(3, usuario.getSenha());
+            stmt.setString(4, usuario.getCpf());
+            stmt.setString(5, usuario.getTelefone());
+            stmt.setString(6, usuario.getEmail());
+            stmt.setString(7, usuario.getRua());
+            stmt.setString(8, usuario.getNumero());
+            stmt.setString(9, usuario.getBairro());
+            stmt.setString(10, usuario.getCidade());
+            stmt.setString(11, usuario.getEstado());
+            stmt.setString(12, usuario.getId_usuario().toString());
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "usuario editado com sucesso!");
+            
+           return true; 
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }finally{
+            ConexaoJdbc.closeConnection(conn, stmt);
+>>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
         }
         
     }

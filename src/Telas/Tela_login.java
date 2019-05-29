@@ -122,6 +122,7 @@ public class Tela_login extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+<<<<<<< HEAD
         if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
         }
@@ -146,6 +147,10 @@ public class Tela_login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.\nTente novamente!");
             }
         }
+=======
+       
+        
+>>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -157,6 +162,7 @@ public class Tela_login extends javax.swing.JFrame {
        
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
         
+<<<<<<< HEAD
             if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
                 JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
             }
@@ -182,12 +188,31 @@ public class Tela_login extends javax.swing.JFrame {
                 }  
             }
         } 
+=======
+        if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
+        }else{
+            
+            
+            
+            
+             
+               
+                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
+                
+            
+        
+        }
+        }
+        
+>>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
     }//GEN-LAST:event_jPasswordField_senhaKeyPressed
 
     private void jTextField_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_loginKeyPressed
         
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
         
+<<<<<<< HEAD
             if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
                 JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
             }
@@ -213,6 +238,25 @@ public class Tela_login extends javax.swing.JFrame {
                 }
             }  
         } 
+=======
+        if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
+        }else{
+                
+                
+                
+                
+            
+               
+                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
+                
+            
+        
+        }
+        }
+        
+        
+>>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
     }//GEN-LAST:event_jTextField_loginKeyPressed
 
     /**
