@@ -33,9 +33,8 @@ public class ClienteDao {
         
         boolean salvar;
         
-        if(cliente.getNome().equals("") || cliente.getCpf().equals("")|| cliente.getTelefone().equals("") || 
-           cliente.getEmail().equals("") || cliente.getRua().equals("") || cliente.getNumero().equals("")||
-           cliente.getBairro().equals("") || cliente.getCidade().equals("") || cliente.getEstado().equals("")){
+        if(cliente.getNome().equals("") || cliente.getCpf().equals("")|| cliente.getTelefone().equals("") || cliente.getEmail().equals("") ||
+           cliente.getCidade().equals("") || cliente.getEstado().equals("")){
             salvar = false;
             System.out.println("Existem campos que não foram preenchidos!");
             System.out.println("A tentativa de inclusão de dados falhou!");

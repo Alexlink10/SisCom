@@ -53,7 +53,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="373" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="366" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -103,7 +103,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -128,6 +128,12 @@
                                   <Component id="jTextField_numero" min="-2" pref="87" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jTextField1" min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -175,7 +181,12 @@
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_estado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -187,6 +198,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_nome">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -194,6 +210,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_cpf">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -201,6 +222,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_telefone">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -215,6 +241,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_rua">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -222,6 +253,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_numero">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -229,6 +265,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_bairro">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -236,6 +277,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_cidade">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -243,6 +289,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_estado">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -250,6 +301,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_login">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -257,6 +313,23 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPasswordField_senha">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel12">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Campos obrigatorios"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -423,7 +496,7 @@
               </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
           <Events>

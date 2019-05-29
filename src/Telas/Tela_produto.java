@@ -60,6 +60,8 @@ public class Tela_produto extends javax.swing.JFrame {
         jTextField_marca = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField_cor = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton_localizar = new javax.swing.JButton();
         jButton_editar = new javax.swing.JButton();
@@ -78,20 +80,32 @@ public class Tela_produto extends javax.swing.JFrame {
 
         jLabel1.setText("Referencia:");
 
+        jTextField_referencia.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel2.setText("Modelo:");
 
+        jTextField_modelo.setBackground(new java.awt.Color(255, 255, 204));
+
+        jComboBox_tamanho.setBackground(new java.awt.Color(255, 255, 204));
         jComboBox_tamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "16", "17", "18", "19", "20", "21", "22", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48" }));
 
         jLabel3.setText("Tamanho:");
 
         jLabel4.setText("Quantid:");
 
+        jTextField_quantidade.setBackground(new java.awt.Color(255, 255, 204));
+
+        jTextField_Compra.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel5.setText("Val. Compra:");
 
         jLabel6.setText("Val.Venda:");
 
+        jTextField_venda.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel7.setText("Marca:");
 
+        jTextField_marca.setBackground(new java.awt.Color(255, 255, 204));
         jTextField_marca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_marcaActionPerformed(evt);
@@ -99,6 +113,10 @@ public class Tela_produto extends javax.swing.JFrame {
         });
 
         jLabel8.setText("Cor:");
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 204));
+
+        jLabel9.setText("Campos obrigatorios");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,41 +126,47 @@ public class Tela_produto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_referencia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel9))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_referencia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox_tamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox_tamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField_quantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                    .addComponent(jTextField_modelo))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_marca)))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_venda, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_cor)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_quantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(jTextField_modelo))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_marca)))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_venda, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_cor)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,7 +192,11 @@ public class Tela_produto extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jTextField_venda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap())
         );
 
         jButton_localizar.setText("Localizar");
@@ -344,6 +372,7 @@ public class Tela_produto extends javax.swing.JFrame {
         jTextField_quantidade.setText("");
         jTextField_Compra.setText("");
         jTextField_venda.setText("");
+        jTextField_referencia.requestFocus();
         
     }
    
@@ -545,6 +574,7 @@ public class Tela_produto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -553,6 +583,7 @@ public class Tela_produto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_Compra;
     private javax.swing.JTextField jTextField_cor;
     private javax.swing.JTextField jTextField_marca;

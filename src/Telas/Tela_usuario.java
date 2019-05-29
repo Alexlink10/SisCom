@@ -64,6 +64,8 @@ public class Tela_usuario extends javax.swing.JFrame {
         jTextField_login = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jPasswordField_senha = new javax.swing.JPasswordField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton_salvar = new javax.swing.JButton();
         jButton_editar = new javax.swing.JButton();
@@ -81,25 +83,49 @@ public class Tela_usuario extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
+        jTextField_nome.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel2.setText("CPF:");
 
+        jTextField_cpf.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel3.setText("Telefone:");
+
+        jTextField_telefone.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel4.setText("E-mail:");
 
         jLabel5.setText("Rua:");
 
+        jTextField_rua.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel6.setText("Num:");
+
+        jTextField_numero.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel7.setText("Bairro:");
 
+        jTextField_bairro.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel8.setText("Cidade:");
+
+        jTextField_cidade.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel9.setText("Estado:");
 
+        jTextField_estado.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel10.setText("Login:");
 
+        jTextField_login.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel11.setText("Senha:");
+
+        jPasswordField_senha.setBackground(new java.awt.Color(255, 255, 204));
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 204));
+
+        jLabel12.setText("Campos obrigatorios");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,9 +162,9 @@ public class Tela_usuario extends javax.swing.JFrame {
                                 .addComponent(jPasswordField_senha))
                             .addComponent(jTextField_email)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -156,7 +182,12 @@ public class Tela_usuario extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextField_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -194,7 +225,11 @@ public class Tela_usuario extends javax.swing.JFrame {
                     .addComponent(jTextField_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton_salvar.setText("Salvar");
@@ -300,6 +335,7 @@ public class Tela_usuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1_usuario.getTableHeader().setReorderingAllowed(false);
         jTable1_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1_usuarioMouseClicked(evt);
@@ -336,7 +372,7 @@ public class Tela_usuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -367,6 +403,7 @@ public class Tela_usuario extends javax.swing.JFrame {
     jTextField_bairro.setText("");
     jTextField_cidade.setText("");
     jTextField_estado.setText("");
+    jTextField_nome.requestFocus();
     
     }
     
@@ -614,6 +651,7 @@ public class Tela_usuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -630,6 +668,7 @@ public class Tela_usuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField_senha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1_usuario;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_bairro;
     private javax.swing.JTextField jTextField_cidade;
     private javax.swing.JTextField jTextField_cpf;

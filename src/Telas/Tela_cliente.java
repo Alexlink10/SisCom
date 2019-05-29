@@ -52,6 +52,8 @@ public class Tela_cliente extends javax.swing.JFrame {
         txtEstado = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCliente = new javax.swing.JTable();
@@ -69,11 +71,15 @@ public class Tela_cliente extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
+        txtNome.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel2.setText("CPF:");
 
         jLabel3.setText("Telefone:");
 
         jLabel4.setText("E-mail:");
+
+        txtEmail.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel5.setText("Rua:");
 
@@ -84,6 +90,14 @@ public class Tela_cliente extends javax.swing.JFrame {
         jLabel8.setText("Cidade:");
 
         jLabel9.setText("Estado:");
+
+        txtCpf.setBackground(new java.awt.Color(255, 255, 204));
+
+        txtTelefone.setBackground(new java.awt.Color(255, 255, 204));
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 204));
+
+        jLabel10.setText("Campos obrigatorios");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,7 +117,7 @@ public class Tela_cliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstado))
+                        .addComponent(txtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,7 +141,12 @@ public class Tela_cliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +177,11 @@ public class Tela_cliente extends javax.swing.JFrame {
                     .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -211,6 +234,7 @@ public class Tela_cliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaCliente.getTableHeader().setReorderingAllowed(false);
         tabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaClienteMouseClicked(evt);
@@ -327,6 +351,7 @@ public class Tela_cliente extends javax.swing.JFrame {
         txtBairro.setText("");
         txtCidade.setText("");
         txtEstado.setText("");
+        txtNome.requestFocus();
     }
     
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -433,7 +458,7 @@ public class Tela_cliente extends javax.swing.JFrame {
 
         Integer linha= tabelaCliente.getSelectedRow();
         if (linha < 0){
-            JOptionPane.showMessageDialog(null, "Selecione um cliente para poder excluí-lo!");
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para poder editar!");
         }
         
         String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
@@ -452,17 +477,20 @@ public class Tela_cliente extends javax.swing.JFrame {
         cliente.setEstado(txtEstado.getText());
         
         ClienteDao cd = new ClienteDao();
+       
+        boolean v = cd.campoEmBranco(cliente);
         
-        if(cd.editar(cliente) == true){
+       if(v == true){
+            
             cd.editar(cliente);
-            JOptionPane.showMessageDialog(null, "Cliente de id nº " + id + " alterado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!");
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Erro ao tentar editar cliente de id nº " + id + "!");
+            JOptionPane.showMessageDialog(null, "Erro ao tentar editar cliente!");
         }
-        
-        limparcampos();
+       
+     //limparcampos();
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -495,6 +523,27 @@ public class Tela_cliente extends javax.swing.JFrame {
 
     private void tabelaClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaClienteKeyReleased
         
+         int linha = tabelaCliente.getSelectedRow();
+        String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
+        String nome = tabelaCliente.getModel().getValueAt(linha, 1).toString();
+        String cpf = tabelaCliente.getModel().getValueAt(linha, 2).toString();
+        String telefone = tabelaCliente.getModel().getValueAt(linha, 3).toString();
+        String email = tabelaCliente.getModel().getValueAt(linha, 4).toString();
+        String rua = tabelaCliente.getModel().getValueAt(linha, 5).toString();
+        String numero = tabelaCliente.getModel().getValueAt(linha, 6).toString();
+        String bairro = tabelaCliente.getModel().getValueAt(linha, 7).toString();
+        String cidade = tabelaCliente.getModel().getValueAt(linha, 8).toString();
+        String estado = tabelaCliente.getModel().getValueAt(linha, 9).toString();
+        
+        txtNome.setText(nome);
+        txtCpf.setText(cpf);
+        txtTelefone.setText(telefone);
+        txtEmail.setText(email);
+        txtRua.setText(rua);
+        txtNumero.setText(numero);
+        txtBairro.setText(bairro);
+        txtCidade.setText(cidade);
+        txtEstado.setText(estado);
         
         
     }//GEN-LAST:event_tabelaClienteKeyReleased
@@ -541,6 +590,7 @@ public class Tela_cliente extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -555,6 +605,7 @@ public class Tela_cliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabelaCliente;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCidade;
