@@ -216,6 +216,11 @@ public class Tela_cliente extends javax.swing.JFrame {
                 tabelaClienteMouseClicked(evt);
             }
         });
+        tabelaCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tabelaClienteKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaCliente);
 
         btnLocalizar.setText("Localizar");
@@ -328,9 +333,6 @@ public class Tela_cliente extends javax.swing.JFrame {
         //nome, cpf, telefone, email, rua, numero, bairro, cidade, estado
         Cliente cliente = new Cliente();
         
-        if (txtNome.getText().equals("") || txtCpf.getText().equals("")){
-        JOptionPane.showMessageDialog(null, "A campos obrigatorios que precisa ser preenchido");
-        }else{
         cliente.setNome(txtNome.getText());
         cliente.setCpf(txtCpf.getText());
         cliente.setTelefone(txtTelefone.getText());
@@ -342,11 +344,18 @@ public class Tela_cliente extends javax.swing.JFrame {
         cliente.setEstado(txtEstado.getText());
         
         ClienteDao cd = new ClienteDao();
-        cd.salvar(cliente);
         
-        limparcampos();
-        JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNome() + " cadastrado(a) com sucesso!");
+        boolean v = cd.campoEmBranco(cliente);
+        
+        if(v==true){
+            cd.salvar(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNome() + " cadastrado(a) com sucesso!");
+            limparcampos();
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido!\nTente novamente!");
+        }  
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -422,17 +431,16 @@ public class Tela_cliente extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
-        // não ta pronto 
         Integer linha= tabelaCliente.getSelectedRow();
         if (linha < 0){
             JOptionPane.showMessageDialog(null, "Selecione um cliente para poder excluí-lo!");
         }
         
         String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
-        
-
        
-        Cliente cliente = new Cliente();            
+        Cliente cliente = new Cliente(); 
+        
+        cliente.setId_cliente(Integer.parseInt(id));
         cliente.setNome(txtNome.getText());
         cliente.setCpf(txtCpf.getText());
         cliente.setTelefone(txtTelefone.getText());
@@ -444,8 +452,9 @@ public class Tela_cliente extends javax.swing.JFrame {
         cliente.setEstado(txtEstado.getText());
         
         ClienteDao cd = new ClienteDao();
-        if(cd.editar(cliente, id) == true){
-            cd.editar(cliente, id);
+        
+        if(cd.editar(cliente) == true){
+            cd.editar(cliente);
             JOptionPane.showMessageDialog(null, "Cliente de id nº " + id + " alterado com sucesso!");
         }
         else
@@ -459,10 +468,36 @@ public class Tela_cliente extends javax.swing.JFrame {
 
     private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
  
+        int linha = tabelaCliente.getSelectedRow();
+        String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
+        String nome = tabelaCliente.getModel().getValueAt(linha, 1).toString();
+        String cpf = tabelaCliente.getModel().getValueAt(linha, 2).toString();
+        String telefone = tabelaCliente.getModel().getValueAt(linha, 3).toString();
+        String email = tabelaCliente.getModel().getValueAt(linha, 4).toString();
+        String rua = tabelaCliente.getModel().getValueAt(linha, 5).toString();
+        String numero = tabelaCliente.getModel().getValueAt(linha, 6).toString();
+        String bairro = tabelaCliente.getModel().getValueAt(linha, 7).toString();
+        String cidade = tabelaCliente.getModel().getValueAt(linha, 8).toString();
+        String estado = tabelaCliente.getModel().getValueAt(linha, 9).toString();
         
+        txtNome.setText(nome);
+        txtCpf.setText(cpf);
+        txtTelefone.setText(telefone);
+        txtEmail.setText(email);
+        txtRua.setText(rua);
+        txtNumero.setText(numero);
+        txtBairro.setText(bairro);
+        txtCidade.setText(cidade);
+        txtEstado.setText(estado);
         
         
     }//GEN-LAST:event_tabelaClienteMouseClicked
+
+    private void tabelaClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaClienteKeyReleased
+        
+        
+        
+    }//GEN-LAST:event_tabelaClienteKeyReleased
 
     /**
      * @param args the command line arguments

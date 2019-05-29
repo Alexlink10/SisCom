@@ -29,6 +29,30 @@ public class ClienteDao {
         conn = ConexaoJdbc.getConnection();
     }
     
+        public boolean campoEmBranco (Cliente cliente){
+        
+        boolean salvar;
+        
+        if(cliente.getNome().equals("") || cliente.getCpf().equals("")|| cliente.getTelefone().equals("") || 
+           cliente.getEmail().equals("") || cliente.getRua().equals("") || cliente.getNumero().equals("")||
+           cliente.getBairro().equals("") || cliente.getCidade().equals("") || cliente.getEstado().equals("")){
+            salvar = false;
+            System.out.println("Existem campos que não foram preenchidos!");
+            System.out.println("A tentativa de inclusão de dados falhou!");
+            /*JOptionPane.showMessageDialog(null, "Existem campos que não foram preenchidos!");*/
+        }
+        else
+        {
+            salvar = true;
+            System.out.println("Nenhum campo está em branco!");
+            /*JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");*/
+            
+        }
+        
+        return salvar;
+        
+    }
+    
     public boolean salvar (Cliente cliente){
         
         String sql = "INSERT INTO cliente (nome, cpf, telefone, email, rua, numero, bairro, cidade, estado) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -125,13 +149,15 @@ public class ClienteDao {
             ConexaoJdbc.closeConnection(conn, stmt);
             }
         }
-    public boolean editar (Cliente cliente, String id){
+    
+    public boolean editar (Cliente cliente){
         
-        String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, email = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE id_cliente = " + id;
+        String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, email = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE id_cliente = ?";
         
         PreparedStatement stmt = null;
         
-        try{
+        try
+        {
             System.out.println("Iniciando update de dados...");
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
@@ -143,20 +169,21 @@ public class ClienteDao {
             stmt.setString(7, cliente.getBairro());
             stmt.setString(8, cliente.getCidade());
             stmt.setString(9, cliente.getEstado());
+            stmt.setInt(10, cliente.getId_cliente());
             
             stmt.executeUpdate();
             
             return true;
-            }    
-            catch (SQLException ex) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-                return false;
-            }
-            finally{
+        }    
+        catch (SQLException ex) 
+        {
+           throw new RuntimeException (ex);
+        }
+        finally{
             System.out.println("Conexão encerrada com o DB.");
             ConexaoJdbc.closeConnection(conn, stmt);
-            }
         }
+    }
     
   
 }

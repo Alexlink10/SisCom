@@ -155,7 +155,6 @@ public class UsuarioDao {
         
     }
     
-<<<<<<< HEAD
     public boolean login(String login, String senha){
         
         String query = "SELECT * FROM usuario WHERE login = '" + login + "' AND senha = '" + senha + "'";
@@ -181,12 +180,14 @@ public class UsuarioDao {
                 return false;
             }
             
-        } catch (SQLException ex) {
-            System.err.println("Erro!" + ex);
-            ConexaoJdbc.closeConnection(conn, stmt);
-            return false;
-=======
-    
+            } catch (SQLException ex) {
+                System.err.println("Erro!" + ex);
+                ConexaoJdbc.closeConnection(conn, stmt);
+                return false;
+            }
+        
+    }
+            
     public boolean editar (Usuario usuario){
     
         String query = "UPDATE usuario SET nome = ?, login = ?, senha = ?, cpf = ?, telefone = ?, email = ?, rua = ?, numero = ?, bairro = ?, cidade = ?, estado = ? WHERE id_usuario = ?";
@@ -211,16 +212,13 @@ public class UsuarioDao {
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "usuario editado com sucesso!");
-            
-           return true; 
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }finally{
             ConexaoJdbc.closeConnection(conn, stmt);
->>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
-        }
-        
+            return true;
+        } 
+        catch (SQLException ex) 
+        {
+            throw new RuntimeException (ex);
+        }  
     }
     
 }

@@ -35,8 +35,9 @@ public class Tela_login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField_login = new javax.swing.JTextField();
         jPasswordField_senha = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        conectar = new javax.swing.JButton();
+        sair_principal = new javax.swing.JButton();
+        icone_cadeado_login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Login");
@@ -45,6 +46,11 @@ public class Tela_login extends javax.swing.JFrame {
 
         jLabel2.setText("Senha:");
 
+        jTextField_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_loginActionPerformed(evt);
+            }
+        });
         jTextField_login.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField_loginKeyPressed(evt);
@@ -57,46 +63,55 @@ public class Tela_login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Conectar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        conectar.setText("Conectar");
+        conectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                conectarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sair");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        sair_principal.setText("Sair");
+        sair_principal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                sair_principalActionPerformed(evt);
             }
         });
+
+        icone_cadeado_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/login.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_login))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(95, 95, 95)
-                                .addComponent(jButton2))
-                            .addComponent(jPasswordField_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_login))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(conectar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sair_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPasswordField_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(icone_cadeado_login)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addGap(46, 46, 46)
+                .addComponent(icone_cadeado_login, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -104,11 +119,11 @@ public class Tela_login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jPasswordField_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addComponent(conectar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sair_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(488, 416));
@@ -120,11 +135,10 @@ public class Tela_login extends javax.swing.JFrame {
         jPasswordField_senha.setText("");
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarActionPerformed
         
-<<<<<<< HEAD
         if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
+            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatórios!");
         }
         else
         {
@@ -147,24 +161,19 @@ public class Tela_login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.\nTente novamente!");
             }
         }
-=======
-       
-        
->>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_conectarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void sair_principalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sair_principalActionPerformed
         
         System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_sair_principalActionPerformed
 
     private void jPasswordField_senhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField_senhaKeyPressed
        
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
         
-<<<<<<< HEAD
             if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
+                JOptionPane.showMessageDialog(this, "Preencha os campos obrigatórios!");
             }
             else
             {
@@ -188,33 +197,14 @@ public class Tela_login extends javax.swing.JFrame {
                 }  
             }
         } 
-=======
-        if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
-        }else{
-            
-            
-            
-            
-             
-               
-                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
-                
-            
-        
-        }
-        }
-        
->>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
     }//GEN-LAST:event_jPasswordField_senhaKeyPressed
 
     private void jTextField_loginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_loginKeyPressed
         
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){ 
         
-<<<<<<< HEAD
             if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
+                JOptionPane.showMessageDialog(this, "Preencha os campos obrigatórios!");
             }
             else
             {
@@ -234,30 +224,15 @@ public class Tela_login extends javax.swing.JFrame {
                 else
                 {
                     limpaTela();
-                    JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.\nTente novamente!");
+                    /*JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.\nTente novamente!");*/
                 }
             }  
         } 
-=======
-        if(jTextField_login.getText().equals("")|| jPasswordField_senha.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Preencha os campos obrigatorios!");
-        }else{
-                
-                
-                
-                
-            
-               
-                JOptionPane.showMessageDialog(this, "Usuario não cadastrado");
-                
-            
-        
-        }
-        }
-        
-        
->>>>>>> b910832b0e0648fa90b02d359ed962a92df25e1e
     }//GEN-LAST:event_jTextField_loginKeyPressed
+
+    private void jTextField_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_loginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +260,7 @@ public class Tela_login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Tela_login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -295,11 +271,12 @@ public class Tela_login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton conectar;
+    private javax.swing.JLabel icone_cadeado_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField_senha;
     private javax.swing.JTextField jTextField_login;
+    private javax.swing.JButton sair_principal;
     // End of variables declaration//GEN-END:variables
 }

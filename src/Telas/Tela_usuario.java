@@ -508,6 +508,11 @@ public class Tela_usuario extends javax.swing.JFrame {
  
         
         int linha = jTable1_usuario.getSelectedRow();
+        
+        if (linha < 0){
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para poder excluí-lo!");
+        }
+        
         String id = jTable1_usuario.getModel().getValueAt(linha,0).toString();
         
         Usuario novoUsu = new Usuario();

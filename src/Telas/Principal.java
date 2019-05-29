@@ -28,10 +28,10 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        icone_usuario = new javax.swing.JLabel();
+        icone_cliente = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        icone_produto = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -41,52 +41,54 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_cadastrar = new javax.swing.JMenu();
         jMenuItem_cliente = new javax.swing.JMenuItem();
-        jMenuItem_funcionario = new javax.swing.JMenuItem();
+        jMenuItem_usuario = new javax.swing.JMenuItem();
         jMenuItem_produto = new javax.swing.JMenuItem();
         jMenuItem_sair = new javax.swing.JMenuItem();
         jMenu_relatorio = new javax.swing.JMenu();
         jMenuItem_relatorio_cliente = new javax.swing.JMenuItem();
         jMenuItem_relatorio_fucionario = new javax.swing.JMenuItem();
         jMenuItem_relatorio_produto = new javax.swing.JMenuItem();
-        jMenu3_sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Comercial");
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 0));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone Vendedor.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        icone_usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone Vendedor.png"))); // NOI18N
+        icone_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                icone_usuarioMouseClicked(evt);
             }
         });
-        jLabel1.addKeyListener(new java.awt.event.KeyAdapter() {
+        icone_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabel1KeyPressed(evt);
+                icone_usuarioKeyPressed(evt);
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone Clientes.png"))); // NOI18N
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        icone_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone Clientes.png"))); // NOI18N
+        icone_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                icone_clienteMouseClicked(evt);
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Usuario");
+        jLabel14.setText("Usuário");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone Produtos.png"))); // NOI18N
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        icone_produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone Produtos.png"))); // NOI18N
+        icone_produto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                icone_produtoMouseClicked(evt);
             }
         });
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Produto");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cliente");
 
@@ -102,44 +104,45 @@ public class Principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(icone_usuario)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel14)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel14)
-                        .addGap(78, 78, 78)
-                        .addComponent(jLabel15)
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1)
                         .addGap(58, 58, 58)
-                        .addComponent(jLabel6)
+                        .addComponent(icone_produto)
                         .addGap(61, 61, 61)
-                        .addComponent(jLabel7)))
+                        .addComponent(icone_cliente))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(icone_produto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(icone_usuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))))
+                        .addComponent(icone_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -185,16 +188,21 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jMenuItem_cliente.setText("Clientes");
-        jMenu_cadastrar.add(jMenuItem_cliente);
-
-        jMenuItem_funcionario.setMnemonic('F');
-        jMenuItem_funcionario.setText("Funcionários");
-        jMenuItem_funcionario.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_funcionarioActionPerformed(evt);
+                jMenuItem_clienteActionPerformed(evt);
             }
         });
-        jMenu_cadastrar.add(jMenuItem_funcionario);
+        jMenu_cadastrar.add(jMenuItem_cliente);
+
+        jMenuItem_usuario.setMnemonic('F');
+        jMenuItem_usuario.setText("Usuarios");
+        jMenuItem_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_usuarioActionPerformed(evt);
+            }
+        });
+        jMenu_cadastrar.add(jMenuItem_usuario);
 
         jMenuItem_produto.setMnemonic('P');
         jMenuItem_produto.setText("Produtos");
@@ -217,7 +225,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu_cadastrar);
 
         jMenu_relatorio.setMnemonic('R');
-        jMenu_relatorio.setText("Relatorio");
+        jMenu_relatorio.setText("Relatórios");
 
         jMenuItem_relatorio_cliente.setText("Cliente");
         jMenu_relatorio.add(jMenuItem_relatorio_cliente);
@@ -229,15 +237,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu_relatorio.add(jMenuItem_relatorio_produto);
 
         jMenuBar1.add(jMenu_relatorio);
-
-        jMenu3_sair.setMnemonic('S');
-        jMenu3_sair.setText("Sair");
-        jMenu3_sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3_sairActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu3_sair);
 
         setJMenuBar(jMenuBar1);
 
@@ -265,11 +264,6 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu3_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3_sairActionPerformed
-       
-        System.exit(0);
-    }//GEN-LAST:event_jMenu3_sairActionPerformed
-
     private void jMenuItem_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_produtoActionPerformed
 
         Tela_produto produto = new Tela_produto();
@@ -285,13 +279,13 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jMenuItem_funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_funcionarioActionPerformed
+    private void jMenuItem_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_usuarioActionPerformed
         
         Tela_usuario usuario = new Tela_usuario();
         usuario.setVisible(true);
         dispose();
         
-    }//GEN-LAST:event_jMenuItem_funcionarioActionPerformed
+    }//GEN-LAST:event_jMenuItem_usuarioActionPerformed
 
     private void jMenu_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_cadastrarActionPerformed
        
@@ -304,32 +298,38 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem_sairActionPerformed
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void icone_produtoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icone_produtoMouseClicked
 
         Tela_produto produto = new Tela_produto();
         produto.setVisible(true);
         dispose();
 
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_icone_produtoMouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void icone_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icone_clienteMouseClicked
 
         Tela_cliente cliente = new Tela_cliente();
         cliente.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_icone_clienteMouseClicked
 
-    private void jLabel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel1KeyPressed
+    private void icone_usuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_icone_usuarioKeyPressed
 
-    }//GEN-LAST:event_jLabel1KeyPressed
+    }//GEN-LAST:event_icone_usuarioKeyPressed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void icone_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icone_usuarioMouseClicked
 
         Tela_usuario usuario = new Tela_usuario();
         usuario.setVisible(true);
         dispose();
 
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_icone_usuarioMouseClicked
+
+    private void jMenuItem_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_clienteActionPerformed
+        Tela_cliente telaCliente = new Tela_cliente();
+        telaCliente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem_clienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,23 +367,22 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel icone_cliente;
+    private javax.swing.JLabel icone_produto;
+    private javax.swing.JLabel icone_usuario;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu3_sair;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem_cliente;
-    private javax.swing.JMenuItem jMenuItem_funcionario;
     private javax.swing.JMenuItem jMenuItem_produto;
     private javax.swing.JMenuItem jMenuItem_relatorio_cliente;
     private javax.swing.JMenuItem jMenuItem_relatorio_fucionario;
     private javax.swing.JMenuItem jMenuItem_relatorio_produto;
     private javax.swing.JMenuItem jMenuItem_sair;
+    private javax.swing.JMenuItem jMenuItem_usuario;
     private javax.swing.JMenu jMenu_cadastrar;
     private javax.swing.JMenu jMenu_relatorio;
     private javax.swing.JPanel jPanel1;
