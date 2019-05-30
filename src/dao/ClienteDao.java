@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -59,7 +60,6 @@ public class ClienteDao {
         PreparedStatement stmt = null;
         
         try{
-            System.out.println("Iniciando inclusão de dados...");
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
@@ -76,18 +76,17 @@ public class ClienteDao {
             return true;
             }    
             catch (SQLException ex) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                System.err.println("Erro!" + ex);
                 return false;
             }
             finally{
-            System.out.println("Conexão encerrada com o DB.");
             ConexaoJdbc.closeConnection(conn, stmt);
             }
         }
     
     public List<Cliente> listarClientes(){
         
-        String sql = "SELECT * FROM cliente ";
+        String sql = "SELECT * FROM cliente";
     
         List<Cliente> clientes = new ArrayList<Cliente>();
         
@@ -157,7 +156,6 @@ public class ClienteDao {
         
         try
         {
-            System.out.println("Iniciando update de dados...");
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
@@ -179,10 +177,44 @@ public class ClienteDao {
            throw new RuntimeException (ex);
         }
         finally{
-            System.out.println("Conexão encerrada com o DB.");
             ConexaoJdbc.closeConnection(conn, stmt);
         }
     }
     
-  
+    /*public boolean validarCpf(String cpf){
+        
+        String query = "SELECT * FROM cliente WHERE cpf = '" + cpf + "'";
+        
+        PreparedStatement stmt = null;
+        
+        try 
+        {
+            stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            
+            String cpfDB = rs.getString("cpf");
+            
+            rs.next();
+            
+            stmt.execute();
+            
+            if(cpfDB != cpf){
+                return true;
+            }
+            else
+            {
+                System.out.println("CPF já cadastrado.\nNão é possível salvá-lo novamente!");
+                return false;
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            System.err.println("Erro!" + ex);
+            return false;
+        }
+        finally
+        {
+            ConexaoJdbc.closeConnection(conn, stmt);
+        }
+    }*/
 }

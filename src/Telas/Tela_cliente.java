@@ -355,7 +355,7 @@ public class Tela_cliente extends javax.swing.JFrame {
     }
     
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        //nome, cpf, telefone, email, rua, numero, bairro, cidade, estado
+        
         Cliente cliente = new Cliente();
         
         cliente.setNome(txtNome.getText());
@@ -372,14 +372,18 @@ public class Tela_cliente extends javax.swing.JFrame {
         
         boolean v = cd.campoEmBranco(cliente);
         
-        if(v==true){
+        /*String cpf = (txtCpf.getText());
+        
+        boolean cpfDB = cd.validarCpf(cpf);*/
+        
+        if(v==true){/*&& cpfDB==true*/
             cd.salvar(cliente);
-            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getNome() + " cadastrado(a) com sucesso!");
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado(a) com sucesso!");
             limparcampos();
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido!\nTente novamente!");
+            JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido ou CPF já cadastrado!\nTente novamente!");
         }  
         
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -523,7 +527,7 @@ public class Tela_cliente extends javax.swing.JFrame {
 
     private void tabelaClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaClienteKeyReleased
         
-         int linha = tabelaCliente.getSelectedRow();
+        int linha = tabelaCliente.getSelectedRow();
         String id = tabelaCliente.getModel().getValueAt(linha, 0).toString();
         String nome = tabelaCliente.getModel().getValueAt(linha, 1).toString();
         String cpf = tabelaCliente.getModel().getValueAt(linha, 2).toString();
