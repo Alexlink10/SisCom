@@ -83,8 +83,6 @@ public class UsuarioDao {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        }finally{
-            ConexaoJdbc.closeConnection(conn, stmt);
         }
         
     }
@@ -149,9 +147,6 @@ public class UsuarioDao {
             System.err.println("Erro!" + ex);
             return false;
         }
-        finally{
-            ConexaoJdbc.closeConnection(conn, stmt);
-        }
         
     }
     
@@ -212,7 +207,6 @@ public class UsuarioDao {
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "usuario editado com sucesso!");
-            ConexaoJdbc.closeConnection(conn, stmt);
             return true;
         } 
         catch (SQLException ex) 

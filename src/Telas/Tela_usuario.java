@@ -123,6 +123,7 @@ public class Tela_usuario extends javax.swing.JFrame {
 
         jPasswordField_senha.setBackground(new java.awt.Color(255, 255, 204));
 
+        jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel12.setText("Campos obrigatorios");
@@ -439,6 +440,47 @@ public class Tela_usuario extends javax.swing.JFrame {
                 
                 LimparCampos();
                 
+                List<Usuario> usuarios = ud.listarUsuario();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("id_usuario");
+        modelo.addColumn("nome");
+        modelo.addColumn("login");
+        modelo.addColumn("senha");
+        modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object [12];
+        
+        for(int i = 0; i<usuarios.size(); i++){
+            
+            
+            rowData[0] = usuarios.get(i).getId_usuario();
+            rowData[1] = usuarios.get(i).getNome();
+            rowData[2] = usuarios.get(i).getLogin();
+            rowData[3] = usuarios.get(i).getSenha();
+            rowData[4] = usuarios.get(i).getCpf();
+            rowData[5] = usuarios.get(i).getTelefone();
+            rowData[6] = usuarios.get(i).getEmail();
+            rowData[7] = usuarios.get(i).getRua();
+            rowData[8] = usuarios.get(i).getNumero();
+            rowData[9] = usuarios.get(i).getBairro();
+            rowData[10] = usuarios.get(i).getCidade();
+            rowData[11] = usuarios.get(i).getEstado();
+         
+            modelo.addRow(rowData);
+        }
+        
+        jTable1_usuario.setModel(modelo);
+        
+                
     }//GEN-LAST:event_jButton_salvarActionPerformed
 //String novo;
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
@@ -460,7 +502,47 @@ public class Tela_usuario extends javax.swing.JFrame {
         else
         {
             JOptionPane.showMessageDialog(null, "Erro ao tentar excluir usuario portador do ID " + id + " !");
-        }    
+        }   
+        
+                 List<Usuario> usuarios = ud.listarUsuario();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("id_usuario");
+        modelo.addColumn("nome");
+        modelo.addColumn("login");
+        modelo.addColumn("senha");
+        modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object [12];
+        
+        for(int i = 0; i<usuarios.size(); i++){
+            
+            
+            rowData[0] = usuarios.get(i).getId_usuario();
+            rowData[1] = usuarios.get(i).getNome();
+            rowData[2] = usuarios.get(i).getLogin();
+            rowData[3] = usuarios.get(i).getSenha();
+            rowData[4] = usuarios.get(i).getCpf();
+            rowData[5] = usuarios.get(i).getTelefone();
+            rowData[6] = usuarios.get(i).getEmail();
+            rowData[7] = usuarios.get(i).getRua();
+            rowData[8] = usuarios.get(i).getNumero();
+            rowData[9] = usuarios.get(i).getBairro();
+            rowData[10] = usuarios.get(i).getCidade();
+            rowData[11] = usuarios.get(i).getEstado();
+         
+            modelo.addRow(rowData);
+        }
+        
+        jTable1_usuario.setModel(modelo);
         
     }//GEN-LAST:event_jButton_excluirActionPerformed
 
@@ -570,7 +652,45 @@ public class Tela_usuario extends javax.swing.JFrame {
                 UsuarioDao ud = new UsuarioDao();
         ud.editar(novoUsu);
         
-     
+              List<Usuario> usuarios = ud.listarUsuario();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("id_usuario");
+        modelo.addColumn("nome");
+        modelo.addColumn("login");
+        modelo.addColumn("senha");
+        modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object [12];
+        
+        for(int i = 0; i<usuarios.size(); i++){
+            
+            
+            rowData[0] = usuarios.get(i).getId_usuario();
+            rowData[1] = usuarios.get(i).getNome();
+            rowData[2] = usuarios.get(i).getLogin();
+            rowData[3] = usuarios.get(i).getSenha();
+            rowData[4] = usuarios.get(i).getCpf();
+            rowData[5] = usuarios.get(i).getTelefone();
+            rowData[6] = usuarios.get(i).getEmail();
+            rowData[7] = usuarios.get(i).getRua();
+            rowData[8] = usuarios.get(i).getNumero();
+            rowData[9] = usuarios.get(i).getBairro();
+            rowData[10] = usuarios.get(i).getCidade();
+            rowData[11] = usuarios.get(i).getEstado();
+         
+            modelo.addRow(rowData);
+        }
+        
+        jTable1_usuario.setModel(modelo);
         
     }//GEN-LAST:event_jButton_editarActionPerformed
 

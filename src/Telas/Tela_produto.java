@@ -114,6 +114,7 @@ public class Tela_produto extends javax.swing.JFrame {
 
         jLabel8.setText("Cor:");
 
+        jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel9.setText("Campos obrigatorios");

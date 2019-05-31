@@ -95,6 +95,7 @@ public class Tela_cliente extends javax.swing.JFrame {
 
         txtTelefone.setBackground(new java.awt.Color(255, 255, 204));
 
+        jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel10.setText("Campos obrigatorios");
@@ -355,7 +356,7 @@ public class Tela_cliente extends javax.swing.JFrame {
     }
     
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        //nome, cpf, telefone, email, rua, numero, bairro, cidade, estado
+        
         Cliente cliente = new Cliente();
         
         cliente.setNome(txtNome.getText());
