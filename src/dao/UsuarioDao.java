@@ -37,7 +37,7 @@ public class UsuarioDao {
         boolean salvar;
         
         if(usuario.getNome().equals("")||(usuario.getLogin().equals("")|| usuario.getSenha().equals("") || usuario.getCpf().equals("")
-          || usuario.getTelefone().equals("") || usuario.getEmail().equals("") || usuario.getRua().equals("") || usuario.getNumero().equals("") 
+          || usuario.getTelefone().equals("") || usuario.getRua().equals("") || usuario.getNumero().equals("") 
           || usuario.getBairro().equals("") || usuario.getCidade().equals("") || usuario.getEstado().equals(""))){
             salvar = false;
             System.out.println("Existem campos que não foram preenchidos!");

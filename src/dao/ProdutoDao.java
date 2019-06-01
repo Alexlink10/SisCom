@@ -38,13 +38,13 @@ public class ProdutoDao {
             salvar = false;
             System.out.println("Existem campos que não foram preenchidos!");
             System.out.println("A tentativa de inclusão de dados falhou!");
-            /*JOptionPane.showMessageDialog(null, "Existem campos que não foram preenchidos!");*/
+            JOptionPane.showMessageDialog(null, "Existem campos que não foram preenchidos!");
         }
         else
         {
             salvar = true;
             System.out.println("Nenhum campo está em branco!");
-            /*JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");*/
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
             
         }
         
@@ -101,6 +101,7 @@ public class ProdutoDao {
             while (rs.next()) {
                 Produto produto =  new  Produto();
                 
+                produto.setId_produto(rs.getInt("id_produto"));
                 produto.setReferencia(rs.getInt("referencia"));
                 produto.setModelo(rs.getString("modelo"));
                 produto.setMarca(rs.getString("marca"));
@@ -148,10 +149,10 @@ public class ProdutoDao {
          
      }
      
-     public boolean editar (Produto produto, String referencia){
-         /*
+     public boolean editar (Produto produto){
+         
          String query = "UPDATE produto SET referencia=?, modelo=?, marca=?, tamanho=?, quantidade=?, cor=?,"
-                + " valor_compra=?, valor_venda=? WHERE referencia = " + referencia;
+                + " valor_compra=?, valor_venda=? WHERE id_produto = ?";
          
          PreparedStatement stmt = null;
          
@@ -167,9 +168,7 @@ public class ProdutoDao {
              stmt.setDouble(7, produto.getValor_compra());
              stmt.setDouble(8, produto.getValor_venda());
              
-             stmt.execute();
-             
-             ConexaoJdbc.closeConnection(conn, stmt);
+             stmt.executeUpdate();
              
             return true; 
              
@@ -181,8 +180,7 @@ public class ProdutoDao {
              ConexaoJdbc.closeConnection(conn, stmt);
              System.out.println("conexão encerrada!");
          }
-         */
-         return true;
+         
      }
      
 }

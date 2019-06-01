@@ -62,6 +62,7 @@ public class Tela_produto extends javax.swing.JFrame {
         jTextField_cor = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        btnLimparCampos = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton_localizar = new javax.swing.JButton();
         jButton_editar = new javax.swing.JButton();
@@ -70,7 +71,7 @@ public class Tela_produto extends javax.swing.JFrame {
         jButton_sair = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaProduto = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -119,6 +120,13 @@ public class Tela_produto extends javax.swing.JFrame {
 
         jLabel9.setText("Campos obrigatorios");
 
+        btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCamposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,10 +134,6 @@ public class Tela_produto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -167,8 +171,15 @@ public class Tela_produto extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_cor)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jTextField_cor)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimparCampos)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +207,8 @@ public class Tela_produto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(btnLimparCampos))
                 .addContainerGap())
         );
 
@@ -265,7 +277,7 @@ public class Tela_produto extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -303,11 +315,16 @@ public class Tela_produto extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(40);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(40);
+        tabelaProduto.getTableHeader().setReorderingAllowed(false);
+        tabelaProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaProdutoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaProduto);
+        if (tabelaProduto.getColumnModel().getColumnCount() > 0) {
+            tabelaProduto.getColumnModel().getColumn(0).setMinWidth(40);
+            tabelaProduto.getColumnModel().getColumn(0).setMaxWidth(40);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -369,7 +386,7 @@ public class Tela_produto extends javax.swing.JFrame {
         jTextField_marca.setText("");
         jTextField_cor.setText("");
         jTextField_modelo.setText("");
-        jComboBox_tamanho.setName("");
+        jComboBox_tamanho.setSelectedItem("");
         jTextField_quantidade.setText("");
         jTextField_Compra.setText("");
         jTextField_venda.setText("");
@@ -416,6 +433,7 @@ public class Tela_produto extends javax.swing.JFrame {
         List <Produto> produto = ppd.listarProduto();
         DefaultTableModel modelo = new DefaultTableModel();
         
+        modelo.addColumn("id_produto");
         modelo.addColumn("referencia");
         modelo.addColumn("modelo");
         modelo.addColumn("marca");
@@ -425,35 +443,36 @@ public class Tela_produto extends javax.swing.JFrame {
         modelo.addColumn("valor_compra");
         modelo.addColumn("valor_venda");
         
-        Object rowData[] = new Object[8];
+        Object rowData[] = new Object[9];
         for(int i=0; i<produto.size();i++){
             
-            rowData[0] = produto.get(i).getReferencia();
-            rowData[1] = produto.get(i).getModelo();
-            rowData[2] = produto.get(i).getMarca();
-            rowData[3] = produto.get(i).getTamanho();
-            rowData[4] = produto.get(i).getQuantidade();
-            rowData[5] = produto.get(i).getCor();
-            rowData[6] = produto.get(i).getValor_compra();
-            rowData[7] = produto.get(i).getValor_venda();
+            rowData[0] = produto.get(i).getId_produto();
+            rowData[1] = produto.get(i).getReferencia();
+            rowData[2] = produto.get(i).getModelo();
+            rowData[3] = produto.get(i).getMarca();
+            rowData[4] = produto.get(i).getTamanho();
+            rowData[5] = produto.get(i).getQuantidade();
+            rowData[6] = produto.get(i).getCor();
+            rowData[7] = produto.get(i).getValor_compra();
+            rowData[8] = produto.get(i).getValor_venda();
             
             modelo.addRow(rowData);
         }
         
-        jTable1.setModel(modelo);
+        tabelaProduto.setModel(modelo);
         
     }//GEN-LAST:event_jButton_localizarActionPerformed
 
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
         
-        int linha = jTable1.getSelectedRow();
+        int linha = tabelaProduto.getSelectedRow();
         
         if (linha < 0){
             JOptionPane.showMessageDialog(null, "Selecione um produto para poder excluí-lo!");
         }
                                                                                                             //linha, coluna.
         //Especificando para pegar um dado da linha selecionada com o clik do mouse, na coluna 0. getValueAt(linha, 0).
-        String referencia = jTable1.getModel().getValueAt(linha, 0).toString();
+        String referencia = tabelaProduto.getModel().getValueAt(linha, 0).toString();
         
         ProdutoDao pd = new ProdutoDao();
         
@@ -474,56 +493,70 @@ public class Tela_produto extends javax.swing.JFrame {
 
     private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
         
-        int linha = jTable1.getSelectedRow();
+        int linha = tabelaProduto.getSelectedRow();
         
         if (linha < 0){
             JOptionPane.showMessageDialog(null, "Selecione um produto para poder editá-lo!");
         }
         
-        String referencia = jTable1.getModel().getValueAt(linha, 0).toString();
+        String id = tabelaProduto.getModel().getValueAt(linha, 0).toString();
         
         Produto produto = new Produto();
         
-        //if (jTextField_referencia.getText() != produto.getReferencia().toString()){
-            produto.setReferencia(Integer.parseInt(jTextField_referencia.getText()));
-        //}
-        //else if (jTextField_modelo.getText() != produto.getModelo()){
-            produto.setModelo(jTextField_modelo.getText());
-        //}
-        //else if (jTextField_marca.getText() != produto.getMarca()){
-            produto.setMarca(jTextField_marca.getText());
-        //}
-        //else if (jComboBox_tamanho.getSelectedItem() != produto.getTamanho()){
-            produto.setTamanho(Integer.parseInt((String) jComboBox_tamanho.getSelectedItem()));
-        //}
-        //else if (jTextField_quantidade.getText() != produto.getQuantidade().toString()){
-            produto.setQuantidade(Integer.parseInt(jTextField_quantidade.getText()));
-        //}
-        //else if (jTextField_cor.getText() != produto.getCor()){
-            produto.setCor(jTextField_cor.getText());
-        //}
-        //else if (jTextField_Compra.getText() != produto.getValor_compra().toString()){
-            produto.setValor_compra(Double.parseDouble(jTextField_Compra.getText()));
-        //}
-        //else if(jTextField_venda.getText() != produto.getValor_venda().toString()){
-            produto.setValor_venda(Double.parseDouble(jTextField_venda.getText()));
-        //}
+        produto.setId_produto(Integer.parseInt(id));
+        produto.setReferencia(Integer.parseInt(jTextField_referencia.getText()));
+        produto.setModelo(jTextField_modelo.getText());
+        produto.setMarca(jTextField_marca.getText());
+        produto.setTamanho(Integer.parseInt((String) jComboBox_tamanho.getSelectedItem()));
+        produto.setQuantidade(Integer.parseInt(jTextField_quantidade.getText()));
+        produto.setCor(jTextField_cor.getText());
+        produto.setValor_compra(Double.parseDouble(jTextField_Compra.getText()));
+        produto.setValor_venda(Double.parseDouble(jTextField_venda.getText()));
         
         ProdutoDao pd = new ProdutoDao();
         
-        if(pd.editar(produto, referencia) == true){
-            pd.editar(produto, referencia);
-            JOptionPane.showMessageDialog(null, "Produto de referencia " + referencia + " alterado com sucesso!");
+        if(pd.editar(produto) == true){
+            pd.editar(produto);
+            JOptionPane.showMessageDialog(null, "Produto de referencia " + id + " alterado com sucesso!");
             
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Erro ao tentar editar produto de referencia " + referencia + " !");
+            JOptionPane.showMessageDialog(null, "Erro ao tentar editar produto de referencia " + id + " !");
         }
         
         limparcampos();
         
     }//GEN-LAST:event_jButton_editarActionPerformed
+
+    private void tabelaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutoMouseClicked
+        
+        int linha = tabelaProduto.getSelectedRow();
+        String id = tabelaProduto.getModel().getValueAt(linha, 0).toString();
+        String referencia = tabelaProduto.getModel().getValueAt(linha, 1).toString();
+        String modelo = tabelaProduto.getModel().getValueAt(linha, 2).toString();
+        String marca = tabelaProduto.getModel().getValueAt(linha, 3).toString();
+        String tamanho = tabelaProduto.getModel().getValueAt(linha, 4).toString();
+        String quantidade = tabelaProduto.getModel().getValueAt(linha, 5).toString();
+        String cor = tabelaProduto.getModel().getValueAt(linha, 6).toString();
+        String valorCompra = tabelaProduto.getModel().getValueAt(linha, 7).toString();
+        String valorVenda = tabelaProduto.getModel().getValueAt(linha, 8).toString();
+        
+        jTextField_referencia.setText(referencia);
+        jTextField_modelo.setText(modelo);
+        jTextField_marca.setText(marca);
+        jComboBox_tamanho.setSelectedItem(tamanho);
+        jTextField_quantidade.setText(quantidade);
+        jTextField_cor.setText(cor);
+        jTextField_Compra.setText(valorCompra);
+        jTextField_venda.setText(valorVenda);
+        
+    }//GEN-LAST:event_tabelaProdutoMouseClicked
+
+    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
+        limparcampos();
+        
+    }//GEN-LAST:event_btnLimparCamposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -561,6 +594,7 @@ public class Tela_produto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton jButton_editar;
     private javax.swing.JButton jButton_excluir;
     private javax.swing.JButton jButton_localizar;
@@ -583,7 +617,6 @@ public class Tela_produto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_Compra;
     private javax.swing.JTextField jTextField_cor;
@@ -592,5 +625,6 @@ public class Tela_produto extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_quantidade;
     private javax.swing.JTextField jTextField_referencia;
     private javax.swing.JTextField jTextField_venda;
+    private javax.swing.JTable tabelaProduto;
     // End of variables declaration//GEN-END:variables
 }

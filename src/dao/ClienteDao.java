@@ -15,12 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-<<<<<<< HEAD
 import javax.swing.JTable;
-=======
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
->>>>>>> b6bd2364f56f77a76f5c911d9827032173158553
 
 /**
  *
