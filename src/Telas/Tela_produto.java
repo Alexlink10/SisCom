@@ -32,6 +32,7 @@ public class Tela_produto extends javax.swing.JFrame {
      */
     public Tela_produto() {
         initComponents();
+        listaAuto();
     }
 
     /**
@@ -107,11 +108,6 @@ public class Tela_produto extends javax.swing.JFrame {
         jLabel7.setText("Marca:");
 
         jTextField_marca.setBackground(new java.awt.Color(255, 255, 204));
-        jTextField_marca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_marcaActionPerformed(evt);
-            }
-        });
 
         jLabel8.setText("Cor:");
 
@@ -321,6 +317,11 @@ public class Tela_produto extends javax.swing.JFrame {
                 tabelaProdutoMouseClicked(evt);
             }
         });
+        tabelaProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tabelaProdutoKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaProduto);
         if (tabelaProduto.getColumnModel().getColumnCount() > 0) {
             tabelaProduto.getColumnModel().getColumn(0).setMinWidth(40);
@@ -414,6 +415,7 @@ public class Tela_produto extends javax.swing.JFrame {
         
         if(v == true && novop.getValor_compra()!= 0 && novop.getValor_venda()!= 0){
             pd.salvar(novop);
+            limparcampos();
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
         }
         else
@@ -422,40 +424,9 @@ public class Tela_produto extends javax.swing.JFrame {
                 
         }
         
-        limparcampos();
         
-        ProdutoDao ppd = new ProdutoDao();
         
-        List <Produto> produto = ppd.listarProduto();
-        DefaultTableModel modelo = new DefaultTableModel();
-        
-        modelo.addColumn("id_produto");
-        modelo.addColumn("referencia");
-        modelo.addColumn("modelo");
-        modelo.addColumn("marca");
-        modelo.addColumn("tamanho");
-        modelo.addColumn("quantidade");
-        modelo.addColumn("cor");
-        modelo.addColumn("valor_compra");
-        modelo.addColumn("valor_venda");
-        
-        Object rowData[] = new Object[9];
-        for(int i=0; i<produto.size();i++){
-            
-            rowData[0] = produto.get(i).getId_produto();
-            rowData[1] = produto.get(i).getReferencia();
-            rowData[2] = produto.get(i).getModelo();
-            rowData[3] = produto.get(i).getMarca();
-            rowData[4] = produto.get(i).getTamanho();
-            rowData[5] = produto.get(i).getQuantidade();
-            rowData[6] = produto.get(i).getCor();
-            rowData[7] = produto.get(i).getValor_compra();
-            rowData[8] = produto.get(i).getValor_venda();
-            
-            modelo.addRow(rowData);
-        }
-        
-        tabelaProduto.setModel(modelo);
+        listaAuto();
         
     }//GEN-LAST:event_jButton_salvarActionPerformed
 
@@ -511,8 +482,7 @@ public class Tela_produto extends javax.swing.JFrame {
         
         if(pd.excluir(referencia) == true){
             pd.excluir(referencia);
-            
-          
+            limparcampos();
             JOptionPane.showMessageDialog(null, "Produto de referencia " + referencia + " excluído com sucesso!");
         }
         else
@@ -520,9 +490,17 @@ public class Tela_produto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao tentar excluir produto de referencia " + referencia + " !");
         }
         
-          ProdutoDao ppd = new ProdutoDao();
         
-        List <Produto> produto = ppd.listarProduto();
+        listaAuto();
+        
+    }//GEN-LAST:event_jButton_excluirActionPerformed
+
+    
+    public void listaAuto(){
+    
+        ProdutoDao pd = new ProdutoDao();
+        List <Produto> produtos = pd.listarProduto();
+        
         DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("id_produto");
@@ -536,29 +514,25 @@ public class Tela_produto extends javax.swing.JFrame {
         modelo.addColumn("valor_venda");
         
         Object rowData[] = new Object[9];
-        for(int i=0; i<produto.size();i++){
+        for(int i=0; i<produtos.size();i++){
             
-            rowData[0] = produto.get(i).getId_produto();
-            rowData[1] = produto.get(i).getReferencia();
-            rowData[2] = produto.get(i).getModelo();
-            rowData[3] = produto.get(i).getMarca();
-            rowData[4] = produto.get(i).getTamanho();
-            rowData[5] = produto.get(i).getQuantidade();
-            rowData[6] = produto.get(i).getCor();
-            rowData[7] = produto.get(i).getValor_compra();
-            rowData[8] = produto.get(i).getValor_venda();
+            rowData[0] = produtos.get(i).getId_produto();
+            rowData[1] = produtos.get(i).getReferencia();
+            rowData[2] = produtos.get(i).getModelo();
+            rowData[3] = produtos.get(i).getMarca();
+            rowData[4] = produtos.get(i).getTamanho();
+            rowData[5] = produtos.get(i).getQuantidade();
+            rowData[6] = produtos.get(i).getCor();
+            rowData[7] = produtos.get(i).getValor_compra();
+            rowData[8] = produtos.get(i).getValor_venda();
             
             modelo.addRow(rowData);
         }
         
         tabelaProduto.setModel(modelo);
-        
-    }//GEN-LAST:event_jButton_excluirActionPerformed
-
-    private void jTextField_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_marcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_marcaActionPerformed
-
+    
+    }
+    
     private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
         
         int linha = tabelaProduto.getSelectedRow();
@@ -571,7 +545,7 @@ public class Tela_produto extends javax.swing.JFrame {
         
         Produto produto = new Produto();
         
-        produto.setId_produto(Integer.parseInt(id));
+        
         produto.setReferencia(Integer.parseInt(jTextField_referencia.getText()));
         produto.setModelo(jTextField_modelo.getText());
         produto.setMarca(jTextField_marca.getText());
@@ -580,25 +554,31 @@ public class Tela_produto extends javax.swing.JFrame {
         produto.setCor(jTextField_cor.getText());
         produto.setValor_compra(Double.parseDouble(jTextField_Compra.getText()));
         produto.setValor_venda(Double.parseDouble(jTextField_venda.getText()));
+        produto.setId_produto(Integer.parseInt(id));
         
         ProdutoDao pd = new ProdutoDao();
-        
-        if(pd.editar(produto) == true){
-            pd.editar(produto);
-            JOptionPane.showMessageDialog(null, "Produto de referencia " + id + " alterado com sucesso!");
-            
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Erro ao tentar editar produto de referencia " + id + " !");
-        }
-        
+        pd.editar(produto);
+       
         limparcampos();
+        listaAuto();
+      
+        JOptionPane.showMessageDialog(null, "Produto editado com sucesso!");
         
     }//GEN-LAST:event_jButton_editarActionPerformed
 
     private void tabelaProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutoMouseClicked
         
+        carregarTabela();
+        
+    }//GEN-LAST:event_tabelaProdutoMouseClicked
+
+    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
+        limparcampos();
+        
+    }//GEN-LAST:event_btnLimparCamposActionPerformed
+
+       public void carregarTabela(){
+         
         int linha = tabelaProduto.getSelectedRow();
         String id = tabelaProduto.getModel().getValueAt(linha, 0).toString();
         String referencia = tabelaProduto.getModel().getValueAt(linha, 1).toString();
@@ -618,13 +598,14 @@ public class Tela_produto extends javax.swing.JFrame {
         jTextField_cor.setText(cor);
         jTextField_Compra.setText(valorCompra);
         jTextField_venda.setText(valorVenda);
+         
+     }
+    
+    private void tabelaProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaProdutoKeyReleased
         
-    }//GEN-LAST:event_tabelaProdutoMouseClicked
-
-    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
-        limparcampos();
+        carregarTabela();
         
-    }//GEN-LAST:event_btnLimparCamposActionPerformed
+    }//GEN-LAST:event_tabelaProdutoKeyReleased
 
     /**
      * @param args the command line arguments

@@ -34,7 +34,7 @@ public class ProdutoDao {
         
         boolean salvar;
         
-        if(produto.getMarca().equals("")||(produto.getModelo().equals("")|| produto.getCor().equals("") || produto.getValor_compra().equals(0) || produto.getValor_venda().equals(0) || produto.getReferencia().equals(0) || produto.getTamanho().equals(0))){
+        if(produto.getMarca().equals("")||(produto.getModelo().equals("") || produto.getValor_compra().equals(0) || produto.getValor_venda().equals(0) || produto.getReferencia().equals(0) || produto.getTamanho().equals(0))){
             salvar = false;
             System.out.println("Existem campos que não foram preenchidos!");
             System.out.println("A tentativa de inclusão de dados falhou!");

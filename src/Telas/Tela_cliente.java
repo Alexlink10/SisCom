@@ -83,13 +83,23 @@ public class Tela_cliente extends javax.swing.JFrame {
 
         jLabel5.setText("Rua:");
 
+        txtRua.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel6.setText("Num:");
+
+        txtNumero.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel7.setText("Bairro:");
 
+        txtBairro.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel8.setText("Cidade:");
 
+        txtCidade.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel9.setText("Estado:");
+
+        txtEstado.setBackground(new java.awt.Color(255, 255, 204));
 
         txtCpf.setBackground(new java.awt.Color(255, 255, 204));
 

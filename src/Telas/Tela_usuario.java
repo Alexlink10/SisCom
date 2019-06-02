@@ -41,6 +41,7 @@ public class Tela_usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField_nome = new javax.swing.JTextField();
@@ -66,6 +67,7 @@ public class Tela_usuario extends javax.swing.JFrame {
         jPasswordField_senha = new javax.swing.JPasswordField();
         jTextField1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton_salvar = new javax.swing.JButton();
         jButton_editar = new javax.swing.JButton();
@@ -79,7 +81,7 @@ public class Tela_usuario extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Usuario");
+        setTitle("Fucionários");
 
         jLabel1.setText("Nome:");
 
@@ -127,6 +129,13 @@ public class Tela_usuario extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel12.setText("Campos obrigatorios");
+
+        jButton1.setText("Limpar Campos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,7 +197,9 @@ public class Tela_usuario extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel12)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -229,7 +240,8 @@ public class Tela_usuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -373,7 +385,7 @@ public class Tela_usuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -502,9 +514,12 @@ public class Tela_usuario extends javax.swing.JFrame {
         else
         {
             JOptionPane.showMessageDialog(null, "Erro ao tentar excluir usuario portador do ID " + id + " !");
-        }   
+        }
         
-                 List<Usuario> usuarios = ud.listarUsuario();
+        
+        LimparCampos();
+        
+         List<Usuario> usuarios = ud.listarUsuario();
         
         DefaultTableModel modelo = new DefaultTableModel();
         
@@ -691,6 +706,7 @@ public class Tela_usuario extends javax.swing.JFrame {
         }
         
         jTable1_usuario.setModel(modelo);
+        LimparCampos();
         
     }//GEN-LAST:event_jButton_editarActionPerformed
 
@@ -725,6 +741,12 @@ public class Tela_usuario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jTable1_usuarioKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        LimparCampos();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -765,6 +787,7 @@ public class Tela_usuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLocalizar;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_editar;
     private javax.swing.JButton jButton_excluir;
     private javax.swing.JButton jButton_salvar;
@@ -787,6 +810,7 @@ public class Tela_usuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField_senha;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1_usuario;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_bairro;
