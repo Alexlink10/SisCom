@@ -424,6 +424,39 @@ public class Tela_produto extends javax.swing.JFrame {
         
         limparcampos();
         
+        ProdutoDao ppd = new ProdutoDao();
+        
+        List <Produto> produto = ppd.listarProduto();
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("id_produto");
+        modelo.addColumn("referencia");
+        modelo.addColumn("modelo");
+        modelo.addColumn("marca");
+        modelo.addColumn("tamanho");
+        modelo.addColumn("quantidade");
+        modelo.addColumn("cor");
+        modelo.addColumn("valor_compra");
+        modelo.addColumn("valor_venda");
+        
+        Object rowData[] = new Object[9];
+        for(int i=0; i<produto.size();i++){
+            
+            rowData[0] = produto.get(i).getId_produto();
+            rowData[1] = produto.get(i).getReferencia();
+            rowData[2] = produto.get(i).getModelo();
+            rowData[3] = produto.get(i).getMarca();
+            rowData[4] = produto.get(i).getTamanho();
+            rowData[5] = produto.get(i).getQuantidade();
+            rowData[6] = produto.get(i).getCor();
+            rowData[7] = produto.get(i).getValor_compra();
+            rowData[8] = produto.get(i).getValor_venda();
+            
+            modelo.addRow(rowData);
+        }
+        
+        tabelaProduto.setModel(modelo);
+        
     }//GEN-LAST:event_jButton_salvarActionPerformed
 
     private void jButton_localizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_localizarActionPerformed
@@ -478,12 +511,47 @@ public class Tela_produto extends javax.swing.JFrame {
         
         if(pd.excluir(referencia) == true){
             pd.excluir(referencia);
+            
+          
             JOptionPane.showMessageDialog(null, "Produto de referencia " + referencia + " excluído com sucesso!");
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Erro ao tentar excluir produto de referencia " + referencia + " !");
         }
+        
+          ProdutoDao ppd = new ProdutoDao();
+        
+        List <Produto> produto = ppd.listarProduto();
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("id_produto");
+        modelo.addColumn("referencia");
+        modelo.addColumn("modelo");
+        modelo.addColumn("marca");
+        modelo.addColumn("tamanho");
+        modelo.addColumn("quantidade");
+        modelo.addColumn("cor");
+        modelo.addColumn("valor_compra");
+        modelo.addColumn("valor_venda");
+        
+        Object rowData[] = new Object[9];
+        for(int i=0; i<produto.size();i++){
+            
+            rowData[0] = produto.get(i).getId_produto();
+            rowData[1] = produto.get(i).getReferencia();
+            rowData[2] = produto.get(i).getModelo();
+            rowData[3] = produto.get(i).getMarca();
+            rowData[4] = produto.get(i).getTamanho();
+            rowData[5] = produto.get(i).getQuantidade();
+            rowData[6] = produto.get(i).getCor();
+            rowData[7] = produto.get(i).getValor_compra();
+            rowData[8] = produto.get(i).getValor_venda();
+            
+            modelo.addRow(rowData);
+        }
+        
+        tabelaProduto.setModel(modelo);
         
     }//GEN-LAST:event_jButton_excluirActionPerformed
 

@@ -81,9 +81,7 @@ public class ClienteDao {
                 System.err.println("Erro!" + ex);
                 return false;
             }
-            finally{
-            ConexaoJdbc.closeConnection(conn, stmt);
-            }
+            
         }
     
     public List<Cliente> listarClientes(){
@@ -139,15 +137,13 @@ public class ClienteDao {
             stmt.executeUpdate();
             
             return true;
+            
             }    
             catch (SQLException ex) {
                 Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
-            finally{
-            System.out.println("Conexão encerrada com o DB.");
-            ConexaoJdbc.closeConnection(conn, stmt);
-            }
+            
         }
     
     public boolean editar (Cliente cliente){
@@ -178,9 +174,7 @@ public class ClienteDao {
         {
            throw new RuntimeException (ex);
         }
-        finally{
-            ConexaoJdbc.closeConnection(conn, stmt);
-        }
+        
     }
     
     /*public boolean validarCpf(String cpf){

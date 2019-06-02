@@ -650,7 +650,7 @@ public class Tela_usuario extends javax.swing.JFrame {
                 novoUsu.setId_usuario(Integer.parseInt(id));
                 
                 UsuarioDao ud = new UsuarioDao();
-        ud.editar(novoUsu);
+                ud.editar(novoUsu);
         
               List<Usuario> usuarios = ud.listarUsuario();
         

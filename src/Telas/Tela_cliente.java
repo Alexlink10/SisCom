@@ -387,6 +387,47 @@ public class Tela_cliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Algum campo não foi preenchido ou CPF já cadastrado!\nTente novamente!");
         }  
         
+        
+        
+        List<Cliente> clientes = cd.listarClientes();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        //referenciando as tabelas do DB, entre "", com as colunas da tabela, na ordem definida na tabela desta tela.
+        
+        modelo.addColumn("id_cliente");
+        modelo.addColumn("nome");
+        modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object[10];
+        
+        System.out.println("Pesquisando clientes...");
+        
+        for(int i=0; i<clientes.size();i++){
+            
+            rowData[0] = clientes.get(i).getId_cliente();
+            rowData[1] = clientes.get(i).getNome();
+            rowData[2] = clientes.get(i).getCpf();
+            rowData[3] = clientes.get(i).getTelefone();
+            rowData[4] = clientes.get(i).getEmail();
+            rowData[5] = clientes.get(i).getRua();
+            rowData[6] = clientes.get(i).getNumero();
+            rowData[7] = clientes.get(i).getBairro();
+            rowData[8] = clientes.get(i).getCidade();
+            rowData[9] = clientes.get(i).getEstado();
+            
+            modelo.addRow(rowData); 
+        }
+        //tabelaCliente é o nome da tabela na tela Tela_cliente.
+        tabelaCliente.setModel(modelo);
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -452,9 +493,49 @@ public class Tela_cliente extends javax.swing.JFrame {
        cliente.setId_cliente(Integer.parseInt(id));
        
        ClienteDao cd = new ClienteDao();
-     cd.excluir(cliente);  
+       cd.excluir(cliente);  
      
-     
+       JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!");
+ 
+        limparcampos();
+        List<Cliente> clientes = cd.listarClientes();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        //referenciando as tabelas do DB, entre "", com as colunas da tabela, na ordem definida na tabela desta tela.
+        
+        modelo.addColumn("id_cliente");
+        modelo.addColumn("nome");
+        modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object[10];
+        
+        System.out.println("Pesquisando clientes...");
+        
+        for(int i=0; i<clientes.size();i++){
+            
+            rowData[0] = clientes.get(i).getId_cliente();
+            rowData[1] = clientes.get(i).getNome();
+            rowData[2] = clientes.get(i).getCpf();
+            rowData[3] = clientes.get(i).getTelefone();
+            rowData[4] = clientes.get(i).getEmail();
+            rowData[5] = clientes.get(i).getRua();
+            rowData[6] = clientes.get(i).getNumero();
+            rowData[7] = clientes.get(i).getBairro();
+            rowData[8] = clientes.get(i).getCidade();
+            rowData[9] = clientes.get(i).getEstado();
+            
+            modelo.addRow(rowData); 
+        }
+        //tabelaCliente é o nome da tabela na tela Tela_cliente.
+        tabelaCliente.setModel(modelo);
      
      
     }//GEN-LAST:event_btnExcluirActionPerformed
@@ -495,7 +576,46 @@ public class Tela_cliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao tentar editar cliente!");
         }
        
-     //limparcampos();
+    limparcampos();
+        
+        List<Cliente> clientes = cd.listarClientes();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        //referenciando as tabelas do DB, entre "", com as colunas da tabela, na ordem definida na tabela desta tela.
+        
+        modelo.addColumn("id_cliente");
+        modelo.addColumn("nome");
+        modelo.addColumn("cpf");
+        modelo.addColumn("telefone");
+        modelo.addColumn("email");
+        modelo.addColumn("rua");
+        modelo.addColumn("numero");
+        modelo.addColumn("bairro");
+        modelo.addColumn("cidade");
+        modelo.addColumn("estado");
+        
+        Object rowData[] = new Object[10];
+        
+        System.out.println("Pesquisando clientes...");
+        
+        for(int i=0; i<clientes.size();i++){
+            
+            rowData[0] = clientes.get(i).getId_cliente();
+            rowData[1] = clientes.get(i).getNome();
+            rowData[2] = clientes.get(i).getCpf();
+            rowData[3] = clientes.get(i).getTelefone();
+            rowData[4] = clientes.get(i).getEmail();
+            rowData[5] = clientes.get(i).getRua();
+            rowData[6] = clientes.get(i).getNumero();
+            rowData[7] = clientes.get(i).getBairro();
+            rowData[8] = clientes.get(i).getCidade();
+            rowData[9] = clientes.get(i).getEstado();
+            
+            modelo.addRow(rowData); 
+        }
+        //tabelaCliente é o nome da tabela na tela Tela_cliente.
+        tabelaCliente.setModel(modelo);
         
     }//GEN-LAST:event_btnEditarActionPerformed
 

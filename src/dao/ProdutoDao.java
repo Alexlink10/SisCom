@@ -75,13 +75,10 @@ public class ProdutoDao {
             
             return true;
         } catch (SQLException ex) {
-            /*Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);*/
+            
             JOptionPane.showMessageDialog(null, "Erro ao salvar!");
             System.err.println("Erro!" + ex);
             return false;
-        }finally{
-        
-            ConexaoJdbc.closeConnection(conn, stmt);
         }   
     
     }
@@ -125,9 +122,9 @@ public class ProdutoDao {
         
     }
     
-     public boolean excluir (String referencia){
+     public boolean excluir (String id){
          
-         String query = "DELETE FROM produto WHERE referencia = " + referencia;
+         String query = "DELETE FROM produto WHERE id_produto = " + id;
          
          System.out.println(query);
          
@@ -143,9 +140,7 @@ public class ProdutoDao {
             System.err.println("Erro!" + ex);
             return false;
          }
-         finally{
-             ConexaoJdbc.closeConnection(conn, stmt);
-         }
+         
          
      }
      
@@ -167,6 +162,7 @@ public class ProdutoDao {
              stmt.setString(6, produto.getCor());
              stmt.setDouble(7, produto.getValor_compra());
              stmt.setDouble(8, produto.getValor_venda());
+             stmt.setInt(9, produto.getId_produto());
              
              stmt.executeUpdate();
              
@@ -175,10 +171,6 @@ public class ProdutoDao {
          } catch (SQLException ex) {
             System.err.println("Erro!" + ex);
             return false; 
-         }
-         finally{
-             ConexaoJdbc.closeConnection(conn, stmt);
-             System.out.println("conexão encerrada!");
          }
          
      }
