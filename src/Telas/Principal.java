@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 /**
  *
  * @author Alex
@@ -42,6 +46,7 @@ public class Principal extends javax.swing.JFrame {
         trocarUsuario = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        datateste = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -60,6 +65,11 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Comercial");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 0));
 
@@ -131,6 +141,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Sair");
 
+        datateste.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        datateste.setForeground(new java.awt.Color(255, 255, 255));
+        datateste.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -160,19 +174,24 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(985, 985, 985)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(trocarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(871, 871, 871)
+                        .addComponent(trocarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
-                        .addGap(33, 33, 33)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGap(22, 22, 22)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addGap(55, 55, 55)))
-                .addGap(101, 101, 101))
+                        .addGap(61, 61, 61)))
+                .addComponent(datateste, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,12 +200,14 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel9))
-                                .addGap(134, 134, 134))
-                            .addComponent(jLabel3))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(datateste, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel9)))
+                                .addGap(89, 89, 89)))
                         .addGap(0, 1, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -247,11 +268,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu_cadastrar.setMnemonic('M');
         jMenu_cadastrar.setText("Menu");
-        jMenu_cadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu_cadastrarActionPerformed(evt);
-            }
-        });
 
         jMenuItem_cliente.setMnemonic('C');
         jMenuItem_cliente.setText("Clientes");
@@ -319,11 +335,9 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,12 +362,6 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem_produtoActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       
-        System.exit(0);
-        
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void jMenuItem_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_usuarioActionPerformed
         
         Tela_usuario usuario = new Tela_usuario();
@@ -361,24 +369,38 @@ public class Principal extends javax.swing.JFrame {
         dispose();
         
     }//GEN-LAST:event_jMenuItem_usuarioActionPerformed
-
-    private void jMenu_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_cadastrarActionPerformed
-       
-        
-    }//GEN-LAST:event_jMenu_cadastrarActionPerformed
-
+    
     private void jMenuItem_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_sairActionPerformed
        
         System.exit(0);
         
     }//GEN-LAST:event_jMenuItem_sairActionPerformed
 
+    private void jMenuItem_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_clienteActionPerformed
+        Tela_cliente telaCliente = new Tela_cliente();
+        telaCliente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem_clienteActionPerformed
+
+    private void trocarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trocarUsuarioMouseClicked
+
+        Tela_login login = new Tela_login();
+        login.setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_trocarUsuarioMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+
+        System.exit(0);
+
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     private void icone_produtoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icone_produtoMouseClicked
 
         Tela_produto produto = new Tela_produto();
         produto.setVisible(true);
         dispose();
-
     }//GEN-LAST:event_icone_produtoMouseClicked
 
     private void icone_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icone_clienteMouseClicked
@@ -397,22 +419,16 @@ public class Principal extends javax.swing.JFrame {
         Tela_usuario usuario = new Tela_usuario();
         usuario.setVisible(true);
         dispose();
-
     }//GEN-LAST:event_icone_usuarioMouseClicked
 
-    private void jMenuItem_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_clienteActionPerformed
-        Tela_cliente telaCliente = new Tela_cliente();
-        telaCliente.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem_clienteActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-    private void trocarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trocarUsuarioMouseClicked
+        Date datasistema = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        datateste.setText(formato.format(datasistema));
 
-        Tela_login login = new Tela_login();
-        login.setVisible(true);
-        dispose();
-        
-    }//GEN-LAST:event_trocarUsuarioMouseClicked
+
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -450,6 +466,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel datateste;
     private javax.swing.JLabel icone_cliente;
     private javax.swing.JLabel icone_produto;
     private javax.swing.JLabel icone_usuario;
@@ -481,4 +498,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel trocarUsuario;
     // End of variables declaration//GEN-END:variables
+
+
+    
 }

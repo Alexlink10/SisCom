@@ -8,13 +8,7 @@ package Telas;
 
 import Controle.Usuario;
 import dao.UsuarioDao;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -609,32 +603,7 @@ public class Tela_usuario extends javax.swing.JFrame {
 
     private void jTable1_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1_usuarioMouseClicked
 
-        
-        int linha = jTable1_usuario.getSelectedRow();
-        String id = jTable1_usuario.getModel().getValueAt(linha, 0).toString();
-        String nome = jTable1_usuario.getModel().getValueAt(linha, 1).toString();
-        String login = jTable1_usuario.getModel().getValueAt(linha, 2).toString();
-        String senha = jTable1_usuario.getModel().getValueAt(linha, 3).toString();
-        String cpf = jTable1_usuario.getModel().getValueAt(linha, 4).toString();
-        String telefone = jTable1_usuario.getModel().getValueAt(linha, 5).toString();
-        String email = jTable1_usuario.getModel().getValueAt(linha, 6).toString();
-        String rua = jTable1_usuario.getModel().getValueAt(linha, 7).toString();
-        String numero = jTable1_usuario.getModel().getValueAt(linha, 8).toString();
-        String bairro = jTable1_usuario.getModel().getValueAt(linha, 9).toString();
-        String cidade = jTable1_usuario.getModel().getValueAt(linha, 10).toString();
-        String estado = jTable1_usuario.getModel().getValueAt(linha, 11).toString();
-        
-        jTextField_nome.setText(nome);
-        jTextField_login.setText(login);
-        jPasswordField_senha.setText(senha);
-        jTextField_cpf.setText(cpf);
-        jTextField_telefone.setText(telefone);
-        jTextField_email.setText(email);
-        jTextField_rua.setText(rua);
-        jTextField_numero.setText(numero);
-        jTextField_bairro.setText(bairro);
-        jTextField_cidade.setText(cidade);
-        jTextField_estado.setText(estado);
+        carregarTabela();
         
     }//GEN-LAST:event_jTable1_usuarioMouseClicked
 
@@ -712,33 +681,7 @@ public class Tela_usuario extends javax.swing.JFrame {
 
     private void jTable1_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1_usuarioKeyReleased
        
-         int linha = jTable1_usuario.getSelectedRow();
-        String id = jTable1_usuario.getModel().getValueAt(linha, 0).toString();
-        String nome = jTable1_usuario.getModel().getValueAt(linha, 1).toString();
-        String login = jTable1_usuario.getModel().getValueAt(linha, 2).toString();
-        String senha = jTable1_usuario.getModel().getValueAt(linha, 3).toString();
-        String cpf = jTable1_usuario.getModel().getValueAt(linha, 4).toString();
-        String telefone = jTable1_usuario.getModel().getValueAt(linha, 5).toString();
-        String email = jTable1_usuario.getModel().getValueAt(linha, 6).toString();
-        String rua = jTable1_usuario.getModel().getValueAt(linha, 7).toString();
-        String numero = jTable1_usuario.getModel().getValueAt(linha, 8).toString();
-        String bairro = jTable1_usuario.getModel().getValueAt(linha, 9).toString();
-        String cidade = jTable1_usuario.getModel().getValueAt(linha, 10).toString();
-        String estado = jTable1_usuario.getModel().getValueAt(linha, 11).toString();
-        
-        jTextField_nome.setText(nome);
-        jTextField_login.setText(login);
-        jPasswordField_senha.setText(senha);
-        jTextField_cpf.setText(cpf);
-        jTextField_telefone.setText(telefone);
-        jTextField_email.setText(email);
-        jTextField_rua.setText(rua);
-        jTextField_numero.setText(numero);
-        jTextField_bairro.setText(bairro);
-        jTextField_cidade.setText(cidade);
-        jTextField_estado.setText(estado);
-        
-        
+       carregarTabela();
         
     }//GEN-LAST:event_jTable1_usuarioKeyReleased
 
@@ -824,4 +767,34 @@ public class Tela_usuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_rua;
     private javax.swing.JTextField jTextField_telefone;
     // End of variables declaration//GEN-END:variables
+
+public void carregarTabela(){
+
+      int linha = jTable1_usuario.getSelectedRow();
+        String id = jTable1_usuario.getModel().getValueAt(linha, 0).toString();
+        String nome = jTable1_usuario.getModel().getValueAt(linha, 1).toString();
+        String login = jTable1_usuario.getModel().getValueAt(linha, 2).toString();
+        String senha = jTable1_usuario.getModel().getValueAt(linha, 3).toString();
+        String cpf = jTable1_usuario.getModel().getValueAt(linha, 4).toString();
+        String telefone = jTable1_usuario.getModel().getValueAt(linha, 5).toString();
+        String email = jTable1_usuario.getModel().getValueAt(linha, 6).toString();
+        String rua = jTable1_usuario.getModel().getValueAt(linha, 7).toString();
+        String numero = jTable1_usuario.getModel().getValueAt(linha, 8).toString();
+        String bairro = jTable1_usuario.getModel().getValueAt(linha, 9).toString();
+        String cidade = jTable1_usuario.getModel().getValueAt(linha, 10).toString();
+        String estado = jTable1_usuario.getModel().getValueAt(linha, 11).toString();
+        
+        jTextField_nome.setText(nome);
+        jTextField_login.setText(login);
+        jPasswordField_senha.setText(senha);
+        jTextField_cpf.setText(cpf);
+        jTextField_telefone.setText(telefone);
+        jTextField_email.setText(email);
+        jTextField_rua.setText(rua);
+        jTextField_numero.setText(numero);
+        jTextField_bairro.setText(bairro);
+        jTextField_cidade.setText(cidade);
+        jTextField_estado.setText(estado);
+
+}
 }
