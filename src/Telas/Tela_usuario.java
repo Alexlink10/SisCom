@@ -677,6 +677,7 @@ public class Tela_usuario extends javax.swing.JFrame {
         jTable1_usuario.setModel(modelo);
         LimparCampos();
         
+        
     }//GEN-LAST:event_jButton_editarActionPerformed
 
     private void jTable1_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1_usuarioKeyReleased
