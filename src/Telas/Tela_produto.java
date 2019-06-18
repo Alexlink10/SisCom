@@ -68,7 +68,7 @@ public class Tela_produto extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Produtos");
 
         jLabel1.setText("Referencia:");
@@ -249,7 +249,7 @@ public class Tela_produto extends javax.swing.JFrame {
                 .addComponent(jButton_salvar)
                 .addGap(64, 64, 64)
                 .addComponent(jButton_sair)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +291,7 @@ public class Tela_produto extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Referencias", "Modelo", "Marca", "Tamanho", "Quantidade", "Cor", "Valor Compra", "Valor Venda"
+                "ID", "Referencia", "Modelo", "Marca", "Tamanho", "Quantidade", "Cor", "Valor Compra", "Valor Venda"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -360,7 +360,7 @@ public class Tela_produto extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(769, 741));
+        setSize(new java.awt.Dimension(838, 741));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

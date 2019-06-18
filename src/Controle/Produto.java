@@ -20,8 +20,9 @@ public class Produto {
     private String cor;
     private Double valor_compra;
     private Double valor_venda;
+    private Double subtotal;
 
-    public Produto(Integer id_produto, Integer referencia, String modelo, String marca, Integer tamanho, Integer quantidade, String cor, Double valor_compra, Double valor_venda) {
+    public Produto(Integer id_produto, Integer referencia, String modelo, String marca, Integer tamanho, Integer quantidade, String cor, Double valor_compra, Double valor_venda,Double subtotal) {
         this.id_produto = id_produto;
         this.referencia = referencia;
         this.modelo = modelo;
@@ -31,9 +32,10 @@ public class Produto {
         this.cor = cor;
         this.valor_compra = valor_compra;
         this.valor_venda = valor_venda;
+        this.subtotal = subtotal;
     }
 
-    public Produto(Integer referencia, String modelo, String marca, Integer tamanho, Integer quantidade, String cor, Double valor_compra, Double valor_venda) {
+    public Produto(Integer referencia, String modelo, String marca, Integer tamanho, Integer quantidade, String cor, Double valor_compra, Double valor_venda,Double subtotal) {
         this.referencia = referencia;
         this.modelo = modelo;
         this.marca = marca;
@@ -42,6 +44,7 @@ public class Produto {
         this.cor = cor;
         this.valor_compra = valor_compra;
         this.valor_venda = valor_venda;
+        this.subtotal = subtotal;
     }
     
     public Produto(){  
@@ -117,6 +120,14 @@ public class Produto {
 
     public void setValor_venda(Double valor_venda) {
         this.valor_venda = valor_venda;
+    }
+    
+    public void setSubtotal(Double subtotal) {
+        this.subtotal = subtotal;
+    }
+    
+    public Double getSubtotal() {
+        return subtotal;
     }
     
 }

@@ -66,7 +66,7 @@ public class Tela_cliente extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cliente");
 
         jLabel1.setText("Nome:");
@@ -306,15 +306,15 @@ public class Tela_cliente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(btnSalvar)
-                .addGap(44, 44, 44)
+                .addGap(71, 71, 71)
                 .addComponent(btnLocalizar)
                 .addGap(57, 57, 57)
                 .addComponent(btnEditar)
                 .addGap(58, 58, 58)
                 .addComponent(btnExcluir)
-                .addGap(63, 63, 63)
+                .addGap(71, 71, 71)
+                .addComponent(btnSalvar)
+                .addGap(61, 61, 61)
                 .addComponent(btnSair)
                 .addGap(82, 82, 82)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -342,9 +342,9 @@ public class Tela_cliente extends javax.swing.JFrame {
                             .addComponent(btnLocalizar)
                             .addComponent(btnEditar)
                             .addComponent(btnExcluir)
-                            .addComponent(btnSalvar)
-                            .addComponent(btnSair))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(btnSair)
+                            .addComponent(btnSalvar))
+                        .addContainerGap())))
         );
 
         setSize(new java.awt.Dimension(788, 785));
