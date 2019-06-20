@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
 public class ProdutoJtablemodel extends AbstractTableModel{
     
     private List<Produto> dados = new ArrayList<>();
-    private String [] colunas = {"Referência","Modelo","Marca","Tamanho","Quantidade","Cor","Valor","valor_venda"};
+    private String [] colunas = {"Referência","Modelo","Marca","Tamanho","Quantidade","Cor","Valor","Sub Total"};
 
     @Override
     public String getColumnName(int colunn) {
@@ -114,6 +114,7 @@ public class ProdutoJtablemodel extends AbstractTableModel{
         this.fireTableRowsDeleted(linha, linha);
     
     }
+    
     
     
     
